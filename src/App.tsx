@@ -1,14 +1,15 @@
 import { ProductsList } from "./ProductsList"
 import { Layout } from "./Layout"
+import { Header } from "./Header"
 
 export function App(){
     const name = 'Diana'
     return(
         <div>
             <Layout>
+                <Header></Header>
                 <h1>Чем гуще лес скибиди доп доп ес ес</h1>
                 <h1>Hello naprimer {name}</h1>
-        
                 <ProductsList></ProductsList>
             </Layout>
         </div>
