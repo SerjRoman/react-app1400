@@ -9,8 +9,7 @@ export function App(){
             <Layout>
                 <h1>Чем гуще лес скибиди доп доп ес ес</h1>
                 <h1>Hello naprimer {name}</h1>
-        
-                <ProductsList></ProductsList>      
+                <ProductsList></ProductsList>
             </Layout>
             <Footer></Footer>
         </div>

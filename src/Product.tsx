@@ -1,7 +1,9 @@
 import { useState } from "react"
+import './Product.css'
 
 interface IProductProps {
     name: string,
+    img: string,
     price: number,
 }
 
@@ -16,14 +18,11 @@ export function Product(props:IProductProps){
     }
     }
     return (
-        
-        <div>
+        <div className="product">
             <h1>{props.name}</h1>
-            <h2>{props.price}</h2>
-            <p>Amount: {amount}</p>
-            <button onClick={incrementAmount}>+</button>
-            <button onClick={decrementAmount}>-</button>
-            <hr />
+            <img src={props.img} alt="" id="img"/>
+            <h2 className="Price">Цена</h2>
+            <button className="buy">Купить</button>
         </div>
     )
 }
