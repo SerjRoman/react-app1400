@@ -1,0 +1,78 @@
+
+
+.category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: #EBE7E7;
+    width: 150px;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-family: Inter;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border: 0px;
+    
+}
+
+.input {
+    height: 50px;
+    width: 600px;
+    border-radius: 35px;
+    background-color: #EBE7E7;
+    font-size: 16px;
+    border: none;
+    padding-left: 20px;
+}
+
+img{
+    width: 75px;
+    height: 75px;
+}
+
+.basket {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    gap: 5px; 
+    background-color: #EBE7E7;
+    font-size: 16px;
+    width: 150px;
+    height: 50px;
+    border: none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
+    border-radius: 20px;
+}
+
+button:hover{
+    transition: 0.4s all;
+    background-color: #C6BBBB;
+}
+
+button:active{
+    border: 1px solid black;
+    background-color: white;
+}
+
+
+.headerCSS{
+    width: 1320px;
+    height: 85px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    margin: 20px auto;
+    padding: 10px 0 10px 0;
+}
+
+
+.imgProfile{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border: 1 solid black;
+}
