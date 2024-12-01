@@ -19,9 +19,11 @@ export function Product(props:IProductProps){
     }
     return (
         <div className="product">
-            <h1>{props.name}</h1>
-            <img src={props.img} alt="" id="img"/>
-            <h2 className="Price">Цена</h2>
+            <div className="prodInfo">
+                <h1>{props.name}</h1>
+                <img className="prodImg" src={props.img} alt="" id="img"/>
+                <h2 className="Price">Цена: {props.price}</h2>
+            </div>
             <button className="buy">Купить</button>
         </div>
     )

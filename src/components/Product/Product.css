@@ -6,10 +6,10 @@
     flex-direction: column;
     background-color: #FFD9B3;
     border-radius: 16px;
-    height: 180px;
+    height: 250px;
     margin: 3%;
-    font-size: 8px;
-    min-width: 160px;
+    font-size: 12px;
+    width: 400px;
     box-shadow: 0px 6px rgb(184, 184, 184);
 }
 
@@ -19,20 +19,16 @@
     margin-top: 10px;
 }
 
-img {
-    width: 100;
-    height: 115px;
-    border-radius: 16px;
-}
-
 .buy{
+    
     background-color: #FAF0E6;
     border-radius: 16px;
-    width: 80px;
-    font-size: 10px;
+    width: 100px;
+    height: 50px;
+    font-size: 12px;
     border: none;
-    transform: translate(0, 100%);
     transition: all 0.3s ease;
+    transform: translate(0, 100%);
 }
 
 .buy:hover {
@@ -42,4 +38,16 @@ img {
 .buy:active {
     background-color: #FFFFFF;
     border: 2px solid #98503D;
+}
+
+.prodImg{
+    width: 150px;
+    height: 150px;
+    border-radius: 16px;
+}
+
+.prodInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
