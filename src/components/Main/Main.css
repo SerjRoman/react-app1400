@@ -1,0 +1,8 @@
+.Main {
+    display: flex;
+    background-color: white;
+    border-radius: 16px;
+    margin: 30px;
+    height: 800px;
+    
+}
