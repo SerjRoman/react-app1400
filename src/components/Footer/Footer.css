@@ -4,6 +4,8 @@ footer{
     gap: 10px;
     height: 75px;
     background-color: #FAF0E6;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .img{

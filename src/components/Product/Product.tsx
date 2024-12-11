@@ -10,17 +10,15 @@ interface IProductProps {
 }
 
 export function Product(props:IProductProps){
+    // String.prototype.slice(1, 50)
     return (
-        <div className="product">
-        <Link to={`/product/${props.id}`}>
+        <Link className="product" to={`/product/${props.id}`}>
             <div className="prodInfo">
-                <h1>{props.name}</h1>
+                <h1>{props.name.slice(0,18)}...</h1>
                 <img className="prodImg" src={props.img} alt="" id="img"/>
                 <h2 className="Price">Цена: {props.price}</h2>
             </div>
             <button className="buy">Купить</button>
         </Link>
-            
-        </div>
     )
 }

@@ -3,6 +3,8 @@
     background-color: white;
     border-radius: 16px;
     margin: 30px;
-    height: 800px;
+    min-height: 70vh;
+    height: auto;
+    width: 1320px;
     
 }
