@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 export interface IProduct{
     id: number,
     title: string,
+    description: string,
     price: number,
     image: string,
     category: string,
