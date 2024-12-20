@@ -20,16 +20,16 @@ export function ProductsList(){
     const [filteredProducts, setFilteredProducts] = useState(products)
     const [selectedCategory, setSelectedCategory] = useState('All')
 
-    useEffect(()=>{
-        if(selectedCategory === 'All'){
-            setFilteredProducts(products)
-        } else{
-            setFilteredProducts(products.filter( (product)=>{
-                return product.category === selectedCategory
-            }))
-        }
-        console.log(selectedCategory)
-    }, [selectedCategory, products])
+    // useEffect(()=>{
+    //     if(selectedCategory === 'All'){
+    //         setFilteredProducts(products)
+    //     } else{
+    //         setFilteredProducts(products.filter( (product)=>{
+    //             return product.category === selectedCategory
+    //         }))
+    //     }
+    //     console.log(selectedCategory)
+    // }, [selectedCategory, products])
 
     // useEffect(()=>{
     //     async function getProducts(){

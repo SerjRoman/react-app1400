@@ -18,7 +18,7 @@ export function App(){
                         <Route path="/product/:id" element={<ProductPage></ProductPage>}></Route>
                     </Route>
                     {/* <Route path="/" element={<Layout></Layout>}> */}
-                    
+
                     {/* </Route> */}
                     
                 </Routes>
