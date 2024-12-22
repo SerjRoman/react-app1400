@@ -11,15 +11,27 @@ export interface IProduct{
 
 export function useProducts(){
     const [products, setProducts] = useState<IProduct[]>([])
-
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [error, setError] = useState<string>()
     useEffect(()=>{
         async function getProducts(){
-            const response = await fetch('https://fakestoreapi.com/products')
-            const products = await response.json()
-            setProducts(products)
+            try{
+                setIsLoading(true)
+                const response = await fetch('https://fakestoreapi.com/products')
+                const products = await response.json()
+                setProducts(products)
+            }
+            catch(error){
+                const err = error as string
+                setError(`${err}`)
+            }
+            finally{
+                setIsLoading(false)
+            }
+            
         }
         getProducts()
         
     },[])
-    return {products: products}
+    return {products: products, isLoading: isLoading, error: error}
 }
