@@ -12,7 +12,7 @@ export function Header() {
         />
       </Link>
       <Link to='/products'>
-      <button className="category">
+      <button id="category">
         <svg
           width="26"
           height="16"
@@ -30,7 +30,7 @@ export function Header() {
       </Link>
       
       <input className="input" type="text" placeholder="Пошук продуктів..." />
-      <button className="basket">
+      <button id="basket">
         <svg
           width="26"
           height="26"

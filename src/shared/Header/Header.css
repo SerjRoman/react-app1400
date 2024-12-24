@@ -46,12 +46,22 @@ img{
     border-radius: 20px;
 }
 
-button:hover{
+#category:hover{
     transition: 0.4s all;
     background-color: #C6BBBB;
 }
 
-button:active{
+#category:active{
+    border: 1px solid black;
+    background-color: white;
+}
+
+#basket:hover{
+    transition: 0.4s all;
+    background-color: #C6BBBB;
+}
+
+#basket:active{
     border: 1px solid black;
     background-color: white;
 }

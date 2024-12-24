@@ -1,10 +1,8 @@
-import { ProductsList } from "./ProductsList/ProductsList"
 import { Layout } from "./Layout/Layout"
-import { Header } from "./Header/Header"
-import { Main} from './Main/Main'
-import { Footer } from "./Footer/Footer"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { ProductPage } from "./ProductPage/ProductPage"
+import { ProductListPage } from "../pages/ProductListPage/ProductListPage"
+import { ProductPage } from "../pages/ProductPage/ProductPage"
+import { MainPage } from "../pages/MainPage/MainPage"
 
 
 export function App(){
@@ -12,9 +10,9 @@ export function App(){
         <div>
             <BrowserRouter>
                 <Routes>
-
                     <Route path="/" element={<Layout></Layout>}>
-                        <Route path="/products" element={<ProductsList></ProductsList>}></Route>
+                        <Route path="/" element={<MainPage></MainPage>}></Route>
+                        <Route path="/products" element={<ProductListPage></ProductListPage>}></Route>
                         <Route path="/product/:id" element={<ProductPage></ProductPage>}></Route>
                     </Route>
                     {/* <Route path="/" element={<Layout></Layout>}> */}
