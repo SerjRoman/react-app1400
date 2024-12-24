@@ -16,9 +16,11 @@ export function useProductById(id: number) {
                 setProduct(product)
             }
             catch (error) {
-                // instanceof
-                const err = error as string
-                setError(`${err}`)
+               
+                if (error instanceof Error){
+                    setError(error.message)
+                }
+                
             }
             finally {
                 setIsLoading(false)

@@ -55,7 +55,7 @@ export function ProductsList(){
         </select>
         </div>
         <div className="products">
-            { isLoading === true ? error === undefined ? filteredProducts.map( (product) => {
+            { isLoading === false ? error === undefined ? filteredProducts.map( (product) => {
                 // key - уникальный ключ используется при рендере массивов
                 // нужен для идентифицирования reactом элементов которые отображаются
                     // <img src="" alt="" />
