@@ -11,13 +11,14 @@ const products = [
 ]
 
 export function ProductsList(){
-    const [filteredProducts, setFilteredProducts] = useState(products)
-    const [selectedCategory, setSelectedCategory] = useState('All')
+    const [filteredProducts, setFilteredProducts] = useState(products) // хук React для створення стану в функціональному компоненті з початковим значенням products. filteredProducts масив продуктів, які пройшли фільтрацію за вибраною категорією. setFilteredProducts функція, яка змінює стан filteredProducts
+    const [selectedCategory, setSelectedCategory] = useState('All')// змінна стану, яка зберігає обрану категорію продуктів. setSelectedCategory функція для зміни значення selectedCategory
 
-    useEffect(()=>{
-        if(selectedCategory === 'All'){
+    useEffect(()=>{ // хук для виконання побічних ефектів, таких як оновлення стану, залежно від змін у state або props. Код виконується кожного разу, коли змінюється значення selectedCategory.
+
+        if(selectedCategory === 'All'){ // якщо обрана категорія — 'All', у стан filteredProducts записуються всі продукти.
             setFilteredProducts(products)
-        } else{
+        } else{ // інакше продукти фільтруються за категорією.
             setFilteredProducts(products.filter( (product)=>{
                 return product.category === selectedCategory
             }))
@@ -26,16 +27,17 @@ export function ProductsList(){
     }, [selectedCategory])
 
     return <div className="product-list">
-        <select onChange={(event)=>{
-            setSelectedCategory(event.target.value)
+        <select onChange={(event)=>{ // onChange обробник події, який спрацьовує при зміні значення у випадаючому списку.
+            setSelectedCategory(event.target.value) // отримує нове значення вибраної категорії.
         }
-        }>
-            <option value = 'All'>All</option>
+        }> /* Значення value використовується для оновлення стану selectedCategory. */
+            <option value = 'All'>All</option> 
             <option value = 'Floppa'>Floppa</option>
             <option value = 'Chat-Bot'>Chat-Bot</option>
             <option value = 'Cats'>Cats</option>
         </select>
-            {filteredProducts.map( (product) => {
+            {filteredProducts.map( (product) => { // перебір масиву відфільтрованих продуктів і рендеринг кожного продукту.
+            
                 // key - уникальный ключ используется при рендере массивов
                 // нужен для идентифицирования reactом элементов которые отображаются
                     // <img src="" alt="" />
