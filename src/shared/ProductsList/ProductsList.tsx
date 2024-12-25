@@ -6,6 +6,7 @@ import { Vortex } from 'react-loader-spinner'
 import { useProducts } from "../../hooks/useProducts"
 
 
+
 export function ProductsList(){
     const {products, isLoading, error} = useProducts()
 
@@ -24,6 +25,7 @@ export function ProductsList(){
     }, [selectedCategory, products])
 
 
+
     return <div className="product-list">
         <div className="select-category">
         <select onChange={(event)=>{
@@ -37,21 +39,21 @@ export function ProductsList(){
         </select>
         </div>
         <div className="products">
-            { isLoading === false ? error === undefined ? filteredProducts.map( (product) => {
+            { isLoading === false ? !error ? filteredProducts.map( (product) => {
                 // key - уникальный ключ используется при рендере массивов
                 // нужен для идентифицирования reactом элементов которые отображаются
                     // <img src="" alt="" />
                 
                 return <Product key = {product.id} id={product.id} name = {product.title} price = {product.price} img = {product.image}></Product>
-            }) : (<div>{error}</div>) : (<Vortex
+            }) : (<div>{error}</div>) : (<div className="vortex-productList"><Vortex
                 visible={true}
-                height="80"
-                width="80"
+                height="200"
+                width="200"
                 ariaLabel="vortex-loading"
                 wrapperStyle={{}}
                 wrapperClass="vortex-wrapper"
                 colors={['red', 'green', 'blue', 'yellow', 'orange', 'pink']}
-                />)}
+                /></div>)}
         </div>
     </div>
 }
