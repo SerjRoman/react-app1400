@@ -4,6 +4,7 @@ import './ProductsList.css'
 import { Vortex } from 'react-loader-spinner'
 
 import { useProducts } from "../../hooks/useProducts"
+import { useCategories } from "../../hooks/useCategories"
 
 // const products = [
 //     {id: 0, category: 'Chat-Bot', title: 'Daniel', image: 'https://th-thumbnailer.cdn-si-edu.com/faJoWtc8qjIHuCadMQ2MKjt6xmo=/1000x750/filters:no_upscale()/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/6a/fa/6afa4efa-3f5a-4ea7-90ea-e47173217d59/42-29316901.jpg', price: -15},
@@ -20,6 +21,8 @@ export function ProductsList(){
 
     const [filteredProducts, setFilteredProducts] = useState(products)
     const [selectedCategory, setSelectedCategory] = useState('All')
+    const { categories } = useCategories()
+    
 
     useEffect(()=>{
         if(selectedCategory === 'All'){
@@ -33,12 +36,12 @@ export function ProductsList(){
     }, [selectedCategory, products])
 
     // useEffect(()=>{
-    //     async function getProducts(){
-    //         const response = await fetch('https://fakestoreapi.com/products')
-    //         const products = await response.json()
-    //         setFilteredProducts(products)
+    //     async function getCategories(){
+    //         const response = await fetch('https://fakestoreapi.com/products/categories')
+    //         const categories = await response.json()
+    //         setFilteredProducts(categories)
     //     }
-    //     getProducts()
+    //     getCategories()
     // },[])
 
 
@@ -49,9 +52,9 @@ export function ProductsList(){
         }
         }>
             <option value = 'All'>All</option>
-            <option value = 'Floppa'>Floppa</option>
-            <option value = 'Chat-Bot'>Chat-Bot</option>
-            <option value = 'Cats'>Cats</option>
+            {categories.map(category => {
+                return <option value={category}>{category}</option>
+            })}
         </select>
         </div>
         <div className="products">
