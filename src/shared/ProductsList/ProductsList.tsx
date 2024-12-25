@@ -52,7 +52,7 @@ export function ProductsList(){
                 ariaLabel="vortex-loading"
                 wrapperStyle={{}}
                 wrapperClass="vortex-wrapper"
-                colors={['red', 'green', 'blue', 'yellow', 'orange', 'pink']}
+                colors={['red', 'green', 'blue', 'yellow', 'orange', 'orange']}
                 /></div>)}
         </div>
     </div>
