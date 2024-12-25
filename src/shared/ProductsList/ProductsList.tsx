@@ -61,15 +61,17 @@ export function ProductsList(){
                     // <img src="" alt="" />
                 
                 return <Product key = {product.id} id={product.id} name = {product.title} price = {product.price} img = {product.image}></Product>
-            }) : (<div>{error}</div>) : (<Vortex
-                visible={true}
-                height="80"
-                width="80"
-                ariaLabel="vortex-loading"
-                wrapperStyle={{}}
-                wrapperClass="vortex-wrapper"
-                colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
-                />)}
-        </div>
+            }) : (<div>{error}</div>) : (
+            <div id="loader">
+                <Vortex 
+                    visible={true}
+                    height="80"
+                    width="80"
+                    ariaLabel="vortex-loading"
+                    wrapperStyle={{}}
+                    wrapperClass="vortex-wrapper"
+                    colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+                /></div>)}
+            </div>
     </div>
 }
