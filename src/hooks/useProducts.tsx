@@ -13,6 +13,7 @@ export function useProducts(){
     const [products, setProducts] = useState<IProduct[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>()
+    
     useEffect(()=>{
         async function getProducts(){
             try{

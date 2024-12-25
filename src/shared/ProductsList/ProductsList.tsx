@@ -54,22 +54,22 @@ export function ProductsList(){
             <option value = 'Cats'>Cats</option>
         </select>
         </div>
-        <div className="products">
             { isLoading === true ? error === undefined ? filteredProducts.map( (product) => {
-                // key - уникальный ключ используется при рендере массивов
-                // нужен для идентифицирования reactом элементов которые отображаются
-                    // <img src="" alt="" />
-                
-                return <Product key = {product.id} id={product.id} name = {product.title} price = {product.price} img = {product.image}></Product>
-            }) : (<div>{error}</div>) : (<Vortex
-                visible={true}
-                height="80"
-                width="80"
-                ariaLabel="vortex-loading"
-                wrapperStyle={{}}
-                wrapperClass="vortex-wrapper"
-                colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
-                />)}
-        </div>
+                return <div className="products">
+                        <Product key = {product.id} id={product.id} name = {product.title} price = {product.price} img = {product.image}></Product>
+                    </div>
+            }) : (<div>{error}</div>) : (
+                <div className="loading">
+                    <Vortex
+                        visible={true}
+                        height="80"
+                        width="80"
+                        ariaLabel="vortex-loading"
+                        wrapperStyle={{}}
+                        wrapperClass="vortex-wrapper"
+                        colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+                    />
+                </div>
+            )}
     </div>
 }
