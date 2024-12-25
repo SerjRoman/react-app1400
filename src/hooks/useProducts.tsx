@@ -17,7 +17,6 @@ export function useProducts(){
     useEffect(()=>{
         async function getProducts(){
             try{
-                setIsLoading(true)
                 const response = await fetch('https://fakestoreapi.com/products')
                 const products = await response.json()
                 setProducts(products)
@@ -27,12 +26,11 @@ export function useProducts(){
                 setError(`${err}`)
             }
             finally{
-                setIsLoading(false)
-            }
-            
+                setIsLoading(true)
+            } 
         }
         getProducts()
-        
+
     },[])
     return {products: products, isLoading: isLoading, error: error}
 }

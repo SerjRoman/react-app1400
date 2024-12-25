@@ -32,16 +32,6 @@ export function ProductsList(){
         console.log(selectedCategory)
     }, [selectedCategory, products])
 
-    // useEffect(()=>{
-    //     async function getProducts(){
-    //         const response = await fetch('https://fakestoreapi.com/products')
-    //         const products = await response.json()
-    //         setFilteredProducts(products)
-    //     }
-    //     getProducts()
-    // },[])
-
-
     return <div className="product-list">
         <div className="select-category">
         <select onChange={(event)=>{
@@ -54,10 +44,9 @@ export function ProductsList(){
             <option value = 'Cats'>Cats</option>
         </select>
         </div>
+        <div className="products">
             { isLoading === true ? error === undefined ? filteredProducts.map( (product) => {
-                return <div className="products">
-                        <Product key = {product.id} id={product.id} name = {product.title} price = {product.price} img = {product.image}></Product>
-                    </div>
+                return <Product key = {product.id} id={product.id} name = {product.title} price = {product.price} img = {product.image}></Product>
             }) : (<div>{error}</div>) : (
                 <div className="loading">
                     <Vortex
@@ -71,5 +60,6 @@ export function ProductsList(){
                     />
                 </div>
             )}
+        </div>
     </div>
 }

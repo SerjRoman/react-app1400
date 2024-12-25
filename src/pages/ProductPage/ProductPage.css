@@ -52,3 +52,9 @@
     border: 2px solid #FFBF80;
 }
 
+.spiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
