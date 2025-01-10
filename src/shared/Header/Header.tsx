@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { SearchBar } from "../SearchBar/SearchBar";
 
 
 export function Header() {
@@ -29,7 +30,7 @@ export function Header() {
       </button>
       </Link>
       
-      <input className="input" type="text" placeholder="Пошук продуктів..." />
+      <SearchBar></SearchBar>
       <button id="basket">
         <svg
           width="26"
