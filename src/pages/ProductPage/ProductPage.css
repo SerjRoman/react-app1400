@@ -53,14 +53,8 @@
     border: 2px solid #FFBF80;
 }
 
-.spiner {
-    position: fixed; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.5); 
-    width: 100vw; 
-    height: 100vh; 
+.spiner{
+    width: 1320px;
     display: flex;
     justify-content: center;
     align-items: center;
