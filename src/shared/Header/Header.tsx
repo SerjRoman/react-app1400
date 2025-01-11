@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
+// Импортируем SearchBar
 import { SearchBar } from "../SearchBar/SearchBar";
 
 
@@ -29,7 +30,7 @@ export function Header() {
         Категории
       </button>
       </Link>
-      
+      {/* Используем SearchBar */}
       <SearchBar></SearchBar>
       <button id="basket">
         <svg
