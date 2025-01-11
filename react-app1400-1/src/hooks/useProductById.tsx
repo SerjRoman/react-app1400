@@ -1,32 +1,36 @@
 import { useState, useEffect } from 'react'
 import { IProduct } from './useProducts'
 
-
-// https://fakestoreapi.com/products/id
+// Хук для получения продукта по айдишке
 export function useProductById(id: number) {
+    // Стейт для хранения шары
     const [product, setProduct] = useState<IProduct>()
+    // Стейт для отслеживания загрузки данных
     const [isLoading, setIsLoading] = useState(false)
+    // Стейт для хранения ошибок
     const [error, setError] = useState<string>()
 
     useEffect(() => {
+        // Асинхронная функция для получения данных продукта
         async function getProduct() {
             try {
-                setIsLoading(true)
-                const response = await fetch(`https://fakestoreapi.com/products/${id}`)
-                const product = await response.json()
-                setProduct(product)
+                setIsLoading(true) // Устанавливаем состояние загрузки
+                const response = await fetch(`https://fakestoreapi.com/products/${id}`) // Запрос к API
+                const product = await response.json() // Преобразование ответа в JSON
+                setProduct(product) // Сохранение данных продукта в состояние
             }
             catch (error) {
-                // instanceof
+                // Проверка типа ошибки и установка сообщения об ошибке
                 const err = error instanceof Error ? error.message : undefined
                 setError(`${err}`)
             }
             finally {
-                setIsLoading(false)
+                setIsLoading(false) // Завершение состояния загрузки
             }
         }
-        getProduct()
-    }, [id])
+        getProduct() // Вызов функции получения данных продукта
+    }, [id]) // Зависимость эффекта от ID продукта
 
+    // Возвращаемые значения хука
     return {product: product, isLoading: isLoading, error: error}
 }
