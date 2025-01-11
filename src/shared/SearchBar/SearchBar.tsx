@@ -1,72 +1,59 @@
-import { useEffect, useRef, useState } from "react";
-import "./SearchBar.css";
-import { useProducts } from "../../hooks/useProducts";
-import { SearchProduct } from "../SearchProducts/SearchProducts";
+import { useState, useRef } from "react"
+import "./SearchBar.css"
+// робим функцію SearchBar, яка відповідає за пошук
+export function SearchBar(){
+    // робим стан для управління відкриттям/закриттям модального вікна.
+    // isModalOpen зберігає поточний стан (true- відкрите, false- закрите)
+    // setIsModalOpened змінює цей стан
+    const [isModalOpen, setIsModalOpened] = useState <boolean>(false)
 
-interface ISearchBarProps {
-    setSearch: (value: string) => void;
-    search: string;
-  }
+    // функція, яка викликається при фокусі на полі вводу
+    function inputOnFocus(){
+        // змінюм стан 'isModalOpen' на 'true', відкриваючи модальне вікно
+        setIsModalOpened(true)
+        
+    }
+    // додаємо обробник події "click" до документа(документ- це усі елементи сторінки хтмл)
+    // обробник закриває модальне вікно, якщо юзер клацає за межами 
+    // модального вікна (modalRef) і поля вводу (inputRef)
+    document.addEventListener("click", (event)=>{
+        // виводім в консоль елемент на котрий клікнулі
+        console.log(event.target)
+        // виводім в консоль посилання на модальне вікно
+        console.log(modalRef.current)
 
-export function SearchBar({setSearch, search}: ISearchBarProps){
-
-    const [isOpen, setIsOpen] = useState(false);
-    const modalWinRef = useRef<HTMLDivElement | null>(null);
-
-    const {products} = useProducts()
-  
-    const handleFocus = () => {
-      setIsOpen(true);
-    };
-
-    const handleClose = () => {
-        setIsOpen(false);
-      };
-  
-    useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
-        if (
-          modalWinRef.current &&
-          !modalWinRef.current.contains(event.target as Node)
-        ) {
-          setIsOpen(false);
+        // провєряєм, чи клік був не по модальному вікну і не по полю вводу
+        if (modalRef.current !== event.target && event.target !== inputRef.current){
+            // змінюм стан 'isModalOpen' на 'false', закриваючи модальне вікно
+            setIsModalOpened(false)
         }
-      };
-  
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, []);
-  
-    return (
-      <div className="header">
-        <input
-          type="text"
-          placeholder="Пошук продуктів..."
-          onFocus={handleFocus}
-          className="input"
-          onChange={(event)=>{setSearch(event.target.value)}}
-        />
-  
-        {isOpen && (
-          <div ref={modalWinRef} className="search-modal">
-            <ul>
-                {products.map((product) => {
-                    return (search === '' || product.title.toLowerCase().includes(search.toLowerCase())) ? (
-                        <li className="search-field" key={product.id} onClick={handleClose}>
-                            <SearchProduct
-                                id={product.id}
-                                name={product.title}
-                                price={product.price}
-                                img={product.image}
-                            ></SearchProduct>
-                        </li>
-                    ) : null;
-                })}
-            </ul>
-          </div>
-        )}
-      </div>
-    );
-};
+    })  
+    // робим змінну modalRef з посиланням на HTML-елемент <div>, яке може бути null.
+    const modalRef = useRef<HTMLDivElement | null>(null);
+    // робим змінну inputRef з посиланням на HTML-елемент <input]>, яке може бути null.
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
+    return(
+        <div>
+             <input className="input"
+              type="text"
+            // прив’язка посилання до елемента <input
+              ref={inputRef}
+              placeholder="Пошук продуктів..." 
+              // викликається функція 'inputOnFocus', коли поле отримує фокус.
+              onFocus={inputOnFocus}/> 
+              {/* провєрка, якщо модалка відкрита, то */}
+             { isModalOpen === true 
+                    ? 
+                    // якшо умова виконується, рендериться <div>
+                    <div ref={modalRef}>
+                        <button>opened</button>
+                    </div>
+                    : 
+                    // іначе нічо не рендериться(((
+                    undefined
+            }
+
+        </div>
+    )
+}
