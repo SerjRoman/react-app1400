@@ -1,36 +1,27 @@
 import { useState, useRef } from "react"
 import "./SearchBar.css"
+import { Modal } from "../Modal/Modal"
 
 export function SearchBar(){
     const [isModalOpen, setIsModalOpened] = useState <boolean>(false)
 
     function inputOnFocus(){
         setIsModalOpened(true)
-        
     }
 
-    document.addEventListener("click", (event)=>{
-        console.log(event.target)
-        console.log(modalRef.current)
 
-        if (modalRef.current != event.target && event.target != inputRef.current){
-            setIsModalOpened(false)
-        }
-    })  
+    const modalContainerRef = useRef<HTMLDivElement | null>(null)
 
-    const modalRef = useRef<HTMLDivElement | null>(null);
-    const inputRef = useRef<HTMLInputElement | null>(null);
 
     return(
-        <div>
-             <input className="input" type="text" ref={inputRef} placeholder="Пошук продуктів..." onFocus={inputOnFocus}/>
+        <div ref={modalContainerRef}>
+             <input className="input" type="text" placeholder="Пошук продуктів..." onFocus={inputOnFocus} onClick={(event) => {event.stopPropagation()}}/>
              { isModalOpen === true 
                     ? 
-                    <div ref={modalRef}><button>opened</button></div>
+                    <Modal allowModalCloseOutside={true} onClose={() => {setIsModalOpened(false)}} container={(modalContainerRef.current) ? modalContainerRef.current : undefined}><button>opened</button></Modal>
                     : 
                     undefined
             }
-
         </div>
     )
 }
