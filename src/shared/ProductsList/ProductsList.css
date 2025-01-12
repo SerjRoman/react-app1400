@@ -30,8 +30,9 @@
     border: none;
 }
 
-#loader{
-    position: relative;
-    margin-left: 500%;
-    margin-top: 300%;
+.vortex{
+    width: 1030px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
