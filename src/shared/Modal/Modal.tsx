@@ -2,6 +2,12 @@ import { useState, useRef, ReactNode, useEffect } from "react"
 import "./Modal.css"
 import { createPortal } from "react-dom"
 
+
+// Создаем Интерфей для модалки куда передаем:
+// children - Оно будет хранить модалку
+// allowModalCloseOutside - открывает и закрывает модалку true
+// onClose - Скрывает полностью модалку при ее выводе
+// container - Оно хранит DOM дерево
 interface IModalProps {
     children: ReactNode,
     allowModalCloseOutside: boolean,
@@ -18,7 +24,7 @@ export function Modal(props: IModalProps){
     
         console.log(event.target)
         console.log(modalRef.current)
-
+        // При нажатии на любое место кроме модалки она будет закрываться
         if (modalRef.current !== event.target && !modalRef.current?.contains(event.target as Node)){
             // setIsModalOpened(false)
             onClose()
@@ -26,6 +32,8 @@ export function Modal(props: IModalProps){
         }
         
     }
+
+    // Еффект который при налачии модалки добавляет функцию handleClickOutside при клике на document
 
     useEffect(() => {
         if (!allowModalCloseOutside){
@@ -39,9 +47,9 @@ export function Modal(props: IModalProps){
     }, [])
 
     
-
+    // Тут мы будем хранить самуу модалку
     const modalRef = useRef<HTMLDivElement | null>(null)
-
+    // Создаем портал который мы перенесем на уровень ниже body
     return createPortal(
         <div ref={modalRef} className="modal">{children}</div>,
         container
