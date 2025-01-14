@@ -52,11 +52,9 @@
     border: 2px solid #FFBF80;
 }
 
-
-
-/* FAF0E6*/
-/* FFD9B3 hover */
-/* FFD9B3 */
-
-
-/* FFBF80 */
+.spiner{
+    width: 1320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
