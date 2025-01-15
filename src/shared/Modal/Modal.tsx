@@ -4,10 +4,10 @@ import { createPortal } from "react-dom"
 
 // Створюємо інтерфейс для пропсів
 interface IModalProps {
-    children: ReactNode,
-    allowModalCloseOutside: boolean,
-    onClose: ()=> void,
-    container?: Element
+    children: ReactNode, // Дочірні елементи в модальному вікні
+    allowModalCloseOutside: boolean, // Дозвіл закривати модалку ззовні
+    onClose: ()=> void, // Функція закриття модалки
+    container?: Element // Елемент в якому буде відображатися модалка
 }
 
 
