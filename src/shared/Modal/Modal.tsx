@@ -4,10 +4,10 @@ import { createPortal } from "react-dom"
 
 // Создаем интерфейс IModalProps для передачи properties модального окна
 interface IModalProps {
-    children: ReactNode,
-    allowModalCloseOutside: boolean,
-    onClose: ()=> void,
-    container?: Element
+    children: ReactNode, // ребенок для бесполезной инфы) 
+    allowModalCloseOutside: boolean, // проверка статуса клика вне модального окна
+    onClose: ()=> void, // обработка события закрытия 
+    container?: Element // необязательный контейнер нашего модального окна, который мы передаем в конце
 }
 
 export function Modal(props: IModalProps){
@@ -27,6 +27,7 @@ export function Modal(props: IModalProps){
     }
     // отслеживаем ИЗМИНЕНИЕ состояния(для себя)
     useEffect(() => {
+        // если окно true, то возвращаем ничего( знак ! означает, что объект не null и не undefined)
         if (!allowModalCloseOutside){
             return
         }
