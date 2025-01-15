@@ -1,5 +1,6 @@
 import { useState, useRef } from "react"
 import "./SearchBar.css"
+import { Modal } from "../Modal/Modal"
 
 export function SearchBar(){
     // isModalOpen указывает, открыто ли модальное окно
@@ -12,42 +13,32 @@ export function SearchBar(){
         setIsModalOpened(true)
     }
 
-    // addEventListener отслеживает клик по всему документу
-    document.addEventListener("click", (event)=>{
-        // event.target это элемент, по которому кликнули
-        console.log(event.target)
-        // modalRef.current модальное окно
-        console.log(modalRef.current)
+    // Мы обращяемся к элементам DOM в модальном окне чтобы определить, 
+    // был ли клик по элементам модального окна
+    const modalContainerRef = useRef<HTMLDivElement | null>(null)
 
-        // Условие сравнивает event.target с modalRef.current и inputRef.current (текстовое поле)
-        // Если клик был не на модальное окно и текстовое поле, 
-        // модальное окно закрывается
-        if (modalRef.current != event.target && event.target != inputRef.current && event.target != modalButtonRef.current){
-            setIsModalOpened(false)
-            console.log(event.target)
-        }
-    })  
-
-    // Мы обращяемся к элементам DOM елементам к div и input чтобы определить, 
-    // был ли клик по модальному окну или input
-    const modalRef = useRef<HTMLDivElement | null>(null);
-    const modalButtonRef = useRef<HTMLButtonElement | null>(null);
-    const inputRef = useRef<HTMLInputElement | null>(null);
 
     return(
-        <div>
-            {/* ref={inputRef} связывает input с inputRef */}
-            {/* onFocus={inputOnFocus} при фокусировке вызывает функцию inputOnFocus открывая модальное окно */}
-            <input className="input" type="text" ref={inputRef} placeholder="Пошук продуктів..." onFocus={inputOnFocus}/>
-            {/* если isModalOpen === true то отображаеться модальное окно*/}
+        // ref={modalContainerRef} связывает div с modalRef 
+        <div ref={modalContainerRef}>
+            {/* onFocus={inputOnFocus}  при фокусировке вызывает функцию inputOnFocus открывая модальное окно 
+            onClick={(event) => {event.stopPropagation()} событие которое предотвращает закрытие модального окна при клике на то что в мальном окне */}
+            <input className="input" type="text" placeholder="Пошук продуктів..." onFocus={inputOnFocus} onClick={(event) => {event.stopPropagation()}}/>
             { isModalOpen === true 
                 ? 
-                // ref={modalRef} связывает div с modalRef 
-                <div ref={modalRef} className="modalDiv">
-                    <button ref={modalButtonRef} className="modalButton">opened</button>
-                </div>
+                // allowModalCloseOutside={true} разрешено закрытие модального окна при клике вне его
+                <Modal allowModalCloseOutside={true} onClose={() => 
+                    {setIsModalOpened(false)}} 
+                    // Если элемент отсутствует в DOM, то undefined
+                    // current используется для хранения ссылки на DOM-элемент
+                    container={(modalContainerRef.current) 
+                        ? 
+                        modalContainerRef.current 
+                        : 
+                        undefined}>
+                    <button>opened</button>
+                </Modal>
                 : 
-                // иначе undefined
                 undefined
             }
         </div>

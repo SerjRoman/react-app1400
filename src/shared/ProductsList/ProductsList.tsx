@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 import { Product } from "../Product/Product"
 import './ProductsList.css'
 import { Vortex } from 'react-loader-spinner'
+
 import { useProducts } from "../../hooks/useProducts"
+import { useCategories } from "../../hooks/useCategories"
 
 // const products = [
 //     {id: 0, category: 'Chat-Bot', title: 'Daniel', image: 'https://th-thumbnailer.cdn-si-edu.com/faJoWtc8qjIHuCadMQ2MKjt6xmo=/1000x750/filters:no_upscale()/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/6a/fa/6afa4efa-3f5a-4ea7-90ea-e47173217d59/42-29316901.jpg', price: -15},
@@ -12,11 +14,15 @@ import { useProducts } from "../../hooks/useProducts"
 //     {id: 4, category: 'Chat-Bot', title: 'Daniel4', image: 'https://www.thewildlifediaries.com/wp-content/uploads/2020/01/leopard-walking-768x512.jpg', price: -60}
 // ]
 
+
+
 export function ProductsList(){
     const {products, isLoading, error} = useProducts()
 
     const [filteredProducts, setFilteredProducts] = useState(products)
     const [selectedCategory, setSelectedCategory] = useState('All')
+    const { categories } = useCategories()
+    
 
     useEffect(()=>{
         if(selectedCategory === 'All'){
@@ -30,13 +36,14 @@ export function ProductsList(){
     }, [selectedCategory, products])
 
     // useEffect(()=>{
-    //     async function getProducts(){
-    //         const response = await fetch('https://fakestoreapi.com/products')
-    //         const products = await response.json()
-    //         setFilteredProducts(products)
+    //     async function getCategories(){
+    //         const response = await fetch('https://fakestoreapi.com/products/categories')
+    //         const categories = await response.json()
+    //         setFilteredProducts(categories)
     //     }
-    //     getProducts()
+    //     getCategories()
     // },[])
+
 
     return <div className="product-list">
         <div className="select-category">
@@ -45,33 +52,27 @@ export function ProductsList(){
         }
         }>
             <option value = 'All'>All</option>
-            <option value = 'Floppa'>Floppa</option>
-            <option value = 'Chat-Bot'>Chat-Bot</option>
-            <option value = 'Cats'>Cats</option>
+            {categories.map(category => {
+                return <option value={category}>{category}</option>
+            })}
         </select>
         </div>
         <div className="products">
-            {isLoading ? (
-                <div className="vortex_loader">
-                    <Vortex
-                        visible={true}
-                        height="80"
-                        width="80"
-                        ariaLabel="vortex-loading"
-                        colors={["red", "green", "blue", "yellow", "orange", "purple"]}
-                    />
-                </div>
-            ) : error ? (<div>{error}</div>) : (
-                filteredProducts.map((product) => (
-                    <Product
-                        key={product.id}
-                        id={product.id}
-                        name={product.title}
-                        price={product.price}
-                        img={product.image}
-                    />
-                ))
-            )}
+            { isLoading === false ? !error ? filteredProducts.map( (product) => {
+                // key - уникальный ключ используется при рендере массивов
+                // нужен для идентифицирования reactом элементов которые отображаются
+                    // <img src="" alt="" />
+                
+                return <Product key = {product.id} id={product.id} name = {product.title} price = {product.price} img = {product.image}></Product>
+            }) : (<div>{error}</div>) : (<div className="vortex"><Vortex
+                visible={true}
+                height="200"
+                width="200"
+                ariaLabel="vortex-loading"
+                wrapperStyle={{}}
+                wrapperClass="vortex-wrapper"
+                colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+                /></div>)}
         </div>
     </div>
 }

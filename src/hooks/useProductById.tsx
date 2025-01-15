@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { IProduct } from './useProducts'
 
+
 // https://fakestoreapi.com/products/id
 export function useProductById(id: number) {
     const [product, setProduct] = useState<IProduct>()
@@ -17,7 +18,7 @@ export function useProductById(id: number) {
             }
             catch (error) {
                 // instanceof
-                const err = error as string
+                const err = error instanceof Error ? error.message : undefined
                 setError(`${err}`)
             }
             finally {

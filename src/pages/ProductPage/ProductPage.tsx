@@ -10,14 +10,14 @@ export function ProductPage(){
     // if (){} else {}
     // что-то==true ? Если условие true : Если условеи будет false
     return <div className="productPage">
-        { isLoading ? (<div className="spinner_loader"><FidgetSpinner
-        visible={true}
-        height="200"
-        width="200"
-        ariaLabel="fidget-spinner-loading"
-        wrapperStyle={{}}
-        wrapperClass="fidget-spinner-wrapper"
-    /></div>) : ( !error ?  <>  
+        { isLoading === true ? (<div className="spiner"><FidgetSpinner
+  visible={true}
+  height="200"
+  width="200"
+  ariaLabel="fidget-spinner-loading"
+  wrapperStyle={{}}
+  wrapperClass="fidget-spinner-wrapper"
+    /></div>) : ( !error ? <>  
             <img id="productImg" src={product?.image} alt="" />
             <div className="productPageDesc">
                 <h1>{product?.title}</h1>
