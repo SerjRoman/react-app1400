@@ -25,9 +25,9 @@ export function Modal(props: IModalProps){
         }
         
     }
-    // отслеживаем ИЗМИНЕНИЕ состояния(для себя)
+    // отслеживаем ИЗМИНЕНИЕ состояния(для себя) 
     useEffect(() => {
-        // если окно true, то возвращаем ничего( знак ! означает, что объект не null и не undefined)
+        // если окно true, то возвращаем ничего( знак ! означает, что объект не null и не undefined), нужен для проверки, куда пользователь нажал
         if (!allowModalCloseOutside){
             return
         }
@@ -40,7 +40,7 @@ export function Modal(props: IModalProps){
 
     const modalRef = useRef<HTMLDivElement | null>(null)
 
-    // контейнер модального окна
+    // контейнер модального окна, для инфы модального окна
     return createPortal(
         <div ref={modalRef} className="modal">{children}</div>,
         container
