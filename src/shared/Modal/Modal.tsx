@@ -1,4 +1,4 @@
-import { useState, useRef, ReactNode, useEffect } from "react"
+import { useRef, ReactNode, useEffect } from "react"
 import "./Modal.css"
 import { createPortal } from "react-dom"
 
@@ -9,13 +9,13 @@ interface IModalProps {
     allowModalCloseOutside: boolean,
     onClose: ()=> void,
     container?: Element
+    className: string,
 }
 
 
 // создание и экспорт функционального компонента модального окна
 export function Modal(props: IModalProps){
-    // деструктуризация пропсов для упрощения использования
-    let {children, allowModalCloseOutside, onClose, container=document.body} = props
+    let {children, allowModalCloseOutside, onClose, container=document.body, className} = props
 
     // функция обрабатывающая клик вне модального окна
     function handleClickOutside(event: MouseEvent){
@@ -27,9 +27,7 @@ export function Modal(props: IModalProps){
         if (modalRef.current !== event.target && !modalRef.current?.contains(event.target as Node)){
             // setIsModalOpened(false)
             onClose()
-
         }
-        
     }
 
     // обработчик события для закрытия модального окна при клике вне его содержимого
@@ -45,12 +43,13 @@ export function Modal(props: IModalProps){
     }, [])
 
     
-    // ссылка на модальное окна с использованием хука useRef
+    const classModal = "modal "
+    const classNames = classModal + className
     const modalRef = useRef<HTMLDivElement | null>(null)
 
     // отображение модального окна в указанном позже контейнере с помощью createPortal
     return createPortal(
-        <div ref={modalRef} className="modal">{children}</div>,
+        <div ref={modalRef} className = {classNames} >{children}</div>,
         container
     )
         // <div ref={modalRef} className="modal">{children}</div>    
