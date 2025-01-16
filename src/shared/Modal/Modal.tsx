@@ -1,4 +1,4 @@
-import { useState, useRef, ReactNode, useEffect } from "react"
+import { useRef, ReactNode, useEffect } from "react"
 import "./Modal.css"
 import { createPortal } from "react-dom"
 
@@ -8,13 +8,14 @@ interface IModalProps {
     allowModalCloseOutside: boolean, // Дозвіл закривати модалку ззовні
     onClose: ()=> void, // Функція закриття модалки
     container?: Element // Елемент в якому буде відображатися модалка
+    className: string,
 }
 
 
 
 export function Modal(props: IModalProps){
     // Деструктуризуємо пропс
-    let {children, allowModalCloseOutside, onClose, container=document.body} = props
+    let {children, allowModalCloseOutside, onClose, container=document.body, className} = props
 
     // Створюємо функцію для обробки кліку за межами модалки
     function handleClickOutside(event: MouseEvent){
@@ -28,7 +29,6 @@ export function Modal(props: IModalProps){
             // Викликаємо функцію закриття модалки
             onClose()
         }
-        
     }
 
     useEffect(() => {
@@ -46,12 +46,13 @@ export function Modal(props: IModalProps){
     }, [])
 
     
-    // Використовуємо useRef для збереження модалки в ref
+    const classModal = "modal "
+    const classNames = classModal + className
     const modalRef = useRef<HTMLDivElement | null>(null)
 
     // Повертаємо функцію createPortal, що рендерить модалку в container
     return createPortal(
-        <div ref={modalRef} className="modal">{children}</div>,
+        <div ref={modalRef} className = {classNames} >{children}</div>,
         container
     )
         // <div ref={modalRef} className="modal">{children}</div>    
