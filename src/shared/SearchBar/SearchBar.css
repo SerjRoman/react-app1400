@@ -8,11 +8,12 @@
     padding-left: 20px;
 }
 .SearchBarModal {
-    height: 400px;
+    height: auto;
     width: 600px;
     padding: 10px;
     background-color: #EBE7E7;
     border-top: 1px black solid;
+    max-height: 600px;
     
 }
 

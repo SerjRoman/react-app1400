@@ -1,7 +1,7 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import "./SearchBar.css"
 import { Modal } from "../Modal/Modal"
-import { useProducts } from "../../hooks/useProducts"
+import { IProduct, useProducts } from "../../hooks/useProducts"
 import { Link } from "react-router-dom"
 
 export function SearchBar(){
@@ -17,10 +17,27 @@ export function SearchBar(){
     const modalContainerRef = useRef<HTMLDivElement | null>(null)
     const {products} = useProducts()
     
+    const [input, setInput] = useState('');
+    const [searchedProducts, setSearchedProducts] = useState<IProduct[]>([]);
 
+
+    useEffect(() => {
+        if (input){
+            let productsWithInput = products.filter((el) => el.title.toLowerCase().includes(input.toLowerCase()))
+            setSearchedProducts(productsWithInput);
+            console.log(searchedProducts);
+        } else{
+            setSearchedProducts(products);
+        }
+
+    }, [input])
+
+    // useEffect(() => {
+    //     if (input)
+    // }, [searchedProducts])
     return(
         <div ref={modalContainerRef}>
-             <input className="input" type="text" placeholder="Пошук продуктів..." onFocus={inputOnFocus} onClick={(event) => {event.stopPropagation()}}/>
+             <input className="input" type="text" placeholder="Пошук продуктів..." onFocus={inputOnFocus} onChange={(event) => setInput(event.target.value)} onClick={(event) => {event.stopPropagation()}}/>
                 {/* Якщо є дозвіл на відкриття */}
                 { isModalOpen === true 
                     ? 
@@ -29,7 +46,7 @@ export function SearchBar(){
                     onClose={() => {setIsModalOpened(false)}} 
                     container={(modalContainerRef.current) ? modalContainerRef.current : undefined}>
                             <div className='SearchBarItems'>
-                                {products.map((product)=>{
+                                {searchedProducts.map((product)=>{
                                     return (
                                         <div className='SearchBarItem'>
                                         
@@ -39,7 +56,7 @@ export function SearchBar(){
 
                                         <img className='SearchItemImg' src= {product.image} alt="" />
 
-                                        <Link to={"/product/"+product.id} className="SearchItemTitle" >{product.title}</Link>
+                                        <Link to={"/product/"+product.id} onClick={() => {setIsModalOpened(false)}} className="SearchItemTitle" >{product.title}</Link>
                                         </div>
                                     )
                                 })}
