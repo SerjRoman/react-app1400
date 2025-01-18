@@ -1,4 +1,4 @@
-import { useState, useRef, ReactNode, useEffect } from "react"
+import { useRef, ReactNode, useEffect } from "react"
 import "./Modal.css"
 import { createPortal } from "react-dom"
 
@@ -13,12 +13,13 @@ interface IModalProps {
     allowModalCloseOutside: boolean,
     onClose: ()=> void,
     container?: Element
+    className: string,
 }
 
 
 
 export function Modal(props: IModalProps){
-    let {children, allowModalCloseOutside, onClose, container=document.body} = props
+    let {children, allowModalCloseOutside, onClose, container=document.body, className} = props
 
     function handleClickOutside(event: MouseEvent){
     
@@ -28,9 +29,7 @@ export function Modal(props: IModalProps){
         if (modalRef.current !== event.target && !modalRef.current?.contains(event.target as Node)){
             // setIsModalOpened(false)
             onClose()
-
         }
-        
     }
 
     // Еффект который при налачии модалки добавляет функцию handleClickOutside при клике на document
@@ -47,11 +46,13 @@ export function Modal(props: IModalProps){
     }, [])
 
     
-    // Тут мы будем хранить самуу модалку
+        // Тут мы будем хранить самуу модалку
+    const classModal = "modal "
+    const classNames = classModal + className
     const modalRef = useRef<HTMLDivElement | null>(null)
     // Создаем портал который мы перенесем на уровень ниже body
     return createPortal(
-        <div ref={modalRef} className="modal">{children}</div>,
+        <div ref={modalRef} className = {classNames} >{children}</div>,
         container
     )
         // <div ref={modalRef} className="modal">{children}</div>    
