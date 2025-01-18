@@ -6,7 +6,11 @@ import { Link } from "react-router-dom"
 
 export function SearchBar(){
     const [isModalOpen, setIsModalOpened] = useState <boolean>(false)
+    // const [filteredProducts, setFilteredProducts] = useState([])
+    const [searchText, setSearchText] = useState('')
 
+
+    // const filteredPeople = .filter(n => n.name.includes(searchFilter));
     // Функция что показывает модалку
     function inputOnFocus(){
         setIsModalOpened(true)
@@ -15,12 +19,14 @@ export function SearchBar(){
     // Сохраняем сюда модалку
     const modalContainerRef = useRef<HTMLDivElement | null>(null)
     const {products} = useProducts()
+
+    const filteredProducts = products.filter(n => n.title.includes(searchText));
     
 
     return(
         <div ref={modalContainerRef}>
             {/* Создаем инпут про нажатии на который будет показываться модалка и останавливаться всплитие */}
-             <input className="input" type="text" placeholder="Пошук продуктів..." onFocus={inputOnFocus} onClick={(event) => {event.stopPropagation()}}/>
+             <input className="input" type="text" placeholder="Пошук продуктів..."  onChange={(e) => setSearchText(e.target.value)} onFocus={inputOnFocus} onClick={(event) => {event.stopPropagation()}}/>
              {/* Условие на то включена модалка или нет если нет то она ровна undefined */}
              { isModalOpen === true 
                     ? 
@@ -29,7 +35,7 @@ export function SearchBar(){
                     onClose={() => {setIsModalOpened(false)}} 
                     container={(modalContainerRef.current) ? modalContainerRef.current : undefined}>
                             <div className='SearchBarItems'>
-                                {products.map((product)=>{
+                                {filteredProducts.map((product)=>{
                                     return (
                                         <div className='SearchBarItem'>
                                         
