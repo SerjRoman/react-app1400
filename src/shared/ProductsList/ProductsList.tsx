@@ -28,7 +28,7 @@ export function ProductsList(){
         if(selectedCategory === 'All'){
             setFilteredProducts(products)
         } else{
-            setFilteredProducts(products.filter( (product)=>{
+            setFilteredProducts(products.filter((product)=>{
                 return product.category === selectedCategory
             }))
         }
