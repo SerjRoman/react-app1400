@@ -2,7 +2,7 @@ import { useState } from "react"
 import './Product.css'
 import { Link } from "react-router-dom"
 
-interface IProductProps {
+export interface IProductProps {
     id: number,
     name: string,
     img: string,
