@@ -1,12 +1,14 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import "./SearchBar.css"
 import { Modal } from "../Modal/Modal"
-import { useProducts } from "../../hooks/useProducts"
+import { IProduct, useProducts } from "../../hooks/useProducts"
 import { Link } from "react-router-dom"
 
 export function SearchBar(){
     // создаен состояние открыто ли модальное окно
     const [isModalOpen, setIsModalOpened] = useState <boolean>(false)
+    const [inputText, setInputText] = useState('')
+    const [filteredProduct, setFilteredProducts] = useState<IProduct[]>([]);
     // создаем функцию, которая будет работать при событии онФокус для инпута
     function inputOnFocus(){
         // открываем модальное окно
@@ -16,11 +18,15 @@ export function SearchBar(){
 
     const modalContainerRef = useRef<HTMLDivElement | null>(null)
     const {products} = useProducts()
-    
+    setFilteredProducts(products)
+    useEffect(() => { 
+        const filteredProduct = products.filter((product) => product.title.toLowerCase().includes(inputText.toLowerCase()))
+        setFilteredProducts(filteredProduct);
+    }, [inputText])
 
     return(
         <div ref={modalContainerRef}>
-             <input className="input" type="text" placeholder="Пошук продуктів..." onFocus={inputOnFocus} onClick={(event) => {event.stopPropagation()}}/>
+             <input className="input" type="text" placeholder="Пошук продуктів..." onFocus={inputOnFocus} onChange={(event) => setInputText(event.target.value)} onClick={(event) => {event.stopPropagation()}}/>
              { isModalOpen === true 
                     ? 
                     <Modal className="SearchBarModal" 
@@ -28,7 +34,7 @@ export function SearchBar(){
                     onClose={() => {setIsModalOpened(false)}} 
                     container={(modalContainerRef.current) ? modalContainerRef.current : undefined}>
                             <div className='SearchBarItems'>
-                                {products.map((product)=>{
+                                {filteredProduct.map((product)=>{
                                     return (
                                         <div className='SearchBarItem'>
                                         
