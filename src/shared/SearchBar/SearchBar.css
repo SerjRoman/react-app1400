@@ -8,7 +8,7 @@
     padding-left: 20px;
 }
 .SearchBarModal {
-    height: 400px;
+    height: max-content;
     width: 600px;
     padding: 10px;
     background-color: #EBE7E7;
@@ -26,7 +26,8 @@
     gap: 10px;
     flex-direction: column;
     max-height: 380px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .SearchBarItem{
     height: 55px;
@@ -38,4 +39,9 @@
     align-items: center;
     border-radius: 16px;
 
+}
+
+
+.SearchBarItems::-webkit-scrollbar {
+    display: none;
 }
