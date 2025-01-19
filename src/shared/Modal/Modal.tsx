@@ -1,4 +1,4 @@
-import { useState, useRef, ReactNode, useEffect } from "react"
+import { useRef, ReactNode, useEffect } from "react"
 import "./Modal.css"
 import { createPortal } from "react-dom"
 
@@ -9,13 +9,13 @@ interface IModalProps {
     allowModalCloseOutside: boolean,
     onClose: ()=> void,
     container?: Element
+    className: string,
 }
 
 
 
 export function Modal(props: IModalProps){
-    // за допомогою деструкторизації створюємо змінні і присвоюємо в них дані з props
-    let {children, allowModalCloseOutside, onClose, container=document.body} = props
+    let {children, allowModalCloseOutside, onClose, container=document.body, className} = props
 
     // створюємо функцію, яка відповідає за закриття вікошка
     function handleClickOutside(event: MouseEvent){
@@ -27,9 +27,7 @@ export function Modal(props: IModalProps){
             // setIsModalOpened(false)
             console.log(123123123)
             onClose()
-
         }
-        
     }
 
     useEffect(() => {
@@ -46,12 +44,12 @@ export function Modal(props: IModalProps){
     }, [])
 
     
-    // створюємо посилання на модалку
+    const classModal = "modal "
+    const classNames = classModal + className
     const modalRef = useRef<HTMLDivElement | null>(null)
 
     return createPortal(
-        // робимо портал, за допомогою якого створюємо div або у body, або в якомусь іншому div
-        <div ref={modalRef} className="modal">{children}</div>,
+        <div ref={modalRef} className = {classNames} >{children}</div>,
         container
     )
         // <div ref={modalRef} className="modal">{children}</div>    
