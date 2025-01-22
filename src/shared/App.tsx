@@ -3,21 +3,30 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ProductListPage } from "../pages/ProductListPage/ProductListPage"
 import { ProductPage } from "../pages/ProductPage/ProductPage"
 import { MainPage } from "../pages/MainPage/MainPage"
-import { createContext } from "react"
+import { createContext, useState } from "react"
+import { IProduct } from "../hooks/useProducts"
 
-interface ICartItem{
-    name: string;
-    price: number
-    // addItem: () =>
+interface ICartContext{
+    cartProducts: IProduct[];
+    addToCart: (product: IProduct) => void
 }
 
-const initialValue: ICartItem[] = []
-const cartContext = createContext< ICartItem[] >(initialValue)
+const initialValue: ICartContext = {cartProducts: [], addToCart: (product: IProduct) => {}}
+const cartContext = createContext< ICartContext >(initialValue)
 
 export function App(){
+
+    const [cartProducts, setCartProducts] = useState<IProduct[]>([])
+
+    function addToCart(product: IProduct){
+        cartProducts.push()// -> [все старые эелменты, новый]
+        let array = [...cartProducts, product]
+        setCartProducts(array)
+    }
+
     return(
         <div>
-            <cartContext.Provider value={[{name:"product1",price:1423}]}>
+            <cartContext.Provider value={{cartProducts: cartProducts, addToCart: addToCart}}>
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Layout></Layout>}>
