@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import './Product.css'
 import { Link } from "react-router-dom"
+import { cartContext, ICartContext } from "../App"
 
 interface IProductProps {
     id: number,
@@ -11,6 +12,12 @@ interface IProductProps {
 
 export function Product(props:IProductProps){
     // String.prototype.slice(1, 50)
+    // const [addProd, setAddProd] = useState<ICartContext[]>([])
+
+    // function addToCart(product: IProduct) {
+
+    // }
+
     return (
         <Link className="product" to={`/product/${props.id}`}>
             <div className="prodInfo">
