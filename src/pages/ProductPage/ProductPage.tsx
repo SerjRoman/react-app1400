@@ -46,22 +46,31 @@ export function ProductPage(){
                                 return 
                             }
                             let addToCart = cart.addToCart(product)
+                            
+                            let isInCart
 
-                            // if(cart.isInCart === true){
-                            //     alert(true)
-                            // }else{
-                            //     alert(false)
+                            isInCart = cart.isInCartFunc(product)
+
+                            // alert(isInCart)
+
+                            // if(isInCart === true){
+
                             // }
-
-                            // if (cart.addToCart = 'net')
-                            cart.addToCart(product)
-                            alert(cart.isInCart)
-                            if(cart.isInCart = false){
+                            // if(){
+                                // alert(true)
+                            // }
+                            // else{
+                                // alert(false)
+                            // }
+                            // cart.addToCart(product)
+                            // alert(isInCart)
+                            if(isInCart === false){
                                 setIsModalOpened(true)
 
                                 setTimeout(closeModal,1000)
                             }else{
-                                alert('товар вже додано')
+                                // alert('Продукт уже находится в корзине!')
+                                return
                             }
 
                             event.stopPropagation()
