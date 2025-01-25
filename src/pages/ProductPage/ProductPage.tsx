@@ -42,14 +42,12 @@ export function ProductPage(){
                             }
 
 
-                            const addToCartFunc = addToCart(product)
-
                             const isInCartFunc = isInCart(product)
                             
                             
                             if(isInCartFunc === false){
                                 setIsModalOpened(true)
-
+                                addToCart(product)
                                 setTimeout(closeModal,1000)
                             }else{
                                 return

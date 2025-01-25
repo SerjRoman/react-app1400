@@ -18,7 +18,6 @@ const initialValue: ICartContext = {cartProducts: [], isInCart: (product: IProdu
 export const cartContext = createContext< ICartContext >(initialValue)
 
 export function App(){
-    let isInCartResult:boolean = false
     const [cartProducts, setCartProducts] = useState<IProduct[]>([])
 
     function isInCart(product: IProduct){
