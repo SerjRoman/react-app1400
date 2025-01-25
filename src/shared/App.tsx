@@ -35,9 +35,9 @@ export function App(){
 
         // let isInCart = isInCart
 
-        isInCartFunc(product)
+        // isInCartFunc(product)
 
-        isInCart = isInCartFunc(product)
+        const isInCart = isInCartFunc(product)
         // alert(isInCart)
         if (isInCart === false){
             let array = [...cartProducts, product]
