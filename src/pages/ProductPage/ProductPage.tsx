@@ -5,7 +5,6 @@ import "./ProductPage.css"
 import { FidgetSpinner } from "react-loader-spinner";
 import { cartContext } from "../../shared/App";
 import { useContext, useRef, useState } from "react";
-import { SuccesModal } from "../../shared/SuccesModal/SuccesModal";
 import { Modal } from "../../shared/Modal/Modal";
 
 export function ProductPage(){ 
@@ -14,8 +13,6 @@ export function ProductPage(){
     const { product, isLoading, error } = useProductById(Number(params.id))
 
     const [isModalOpen, setIsModalOpened] = useState <boolean>(false)
-    // const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([])
-    // const [inputValue, setInputValue] = useState<string>("")
     const modalContainerRef = useRef<HTMLDivElement | null>(null)
 
 
@@ -23,17 +20,6 @@ export function ProductPage(){
     function closeModal(){
         setIsModalOpened(false)
     }
-    // function buttonOnClick(event){
-    //     //відкриття модалки
-    //     if (product === undefined){
-    //         setIsModalOpened(true)
-    //     return 
-    //     }
-    //     cart.addToCart(product)
-    //     setIsModalOpened(true)
-    //     event.stopPropogation()
-    // }
-    // if (){} else {}
     // что-то==true ? Если условие true : Если условеи будет false
     return <div className="productPage">
         { isLoading === true ? (<div className="spiner"><FidgetSpinner
@@ -60,10 +46,14 @@ export function ProductPage(){
                             if (product === undefined){
                                 return 
                             }
+
+                            // if (cart.addToCart = 'net')
                             cart.addToCart(product)
                             setIsModalOpened(true)
-                            event.stopPropagation()
+
                             setTimeout(closeModal,1000)
+
+                            event.stopPropagation()
                         }} className="productPageButton" >Кошик</button>
                         { isModalOpen === true ? 
                         <Modal className="SuccessModal" 

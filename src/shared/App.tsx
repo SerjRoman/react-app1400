@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ProductListPage } from "../pages/ProductListPage/ProductListPage"
 import { ProductPage } from "../pages/ProductPage/ProductPage"
 import { MainPage } from "../pages/MainPage/MainPage"
-import { Cart } from "../pages/Cart/Cart"
 import { createContext, useState } from "react"
 import { IProduct } from "../hooks/useProducts"
 
@@ -20,8 +19,20 @@ export function App(){
 
     const [cartProducts, setCartProducts] = useState<IProduct[]>([])
 
+    function checkProduct(product: IProduct , currentProduct: IProduct){
+        if (product.id === currentProduct.id){
+            alert('Товар вже додано до у корзину')
+        }else{
+            return
+        }
+    }
+
     function addToCart(product: IProduct ){
         cartProducts.push()// -> [все старые эелменты, новый]
+
+        cartProducts.filter((prod) => checkProduct(prod, product)  )
+            // alert(product.id)
+        // cartProducts.filter((prod) => prod === product)
         let array = [...cartProducts, product]
         setCartProducts(array)
     }
