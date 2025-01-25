@@ -9,7 +9,8 @@ import { Modal } from "../../shared/Modal/Modal";
 
 export function ProductPage(){ 
     const params = useParams();
-    const cart = useContext(cartContext);
+    const {isInCart, addToCart, ...others} = useContext(cartContext);
+
     const { product, isLoading, error } = useProductById(Number(params.id))
 
     const [isModalOpen, setIsModalOpened] = useState <boolean>(false)
@@ -35,40 +36,22 @@ export function ProductPage(){
                 <p>{product?.description}</p>
                 <p>Ціна: £{product?.price}</p>
                 <div className="productPageButtons">
-                    {/* <button id="cartButton" onClick={() => {    if (product === undefined){
-                        return
-                    }
-                        cart.addToCart(product)}
-                    } className="productPageButton" >Кошик</button> */}
                         <button id="cartButton" onClick={(event) => {
                             if (product === undefined){
                                 return 
                             }
-                            let addToCart = cart.addToCart(product)
+
+
+                            const addToCartFunc = addToCart(product)
+
+                            const isInCartFunc = isInCart(product)
                             
-                            let isInCart
-
-                            isInCart = cart.isInCartFunc(product)
-
-                            // alert(isInCart)
-
-                            // if(isInCart === true){
-
-                            // }
-                            // if(){
-                                // alert(true)
-                            // }
-                            // else{
-                                // alert(false)
-                            // }
-                            // cart.addToCart(product)
-                            // alert(isInCart)
-                            if(isInCart === false){
+                            
+                            if(isInCartFunc === false){
                                 setIsModalOpened(true)
 
                                 setTimeout(closeModal,1000)
                             }else{
-                                // alert('Продукт уже находится в корзине!')
                                 return
                             }
 

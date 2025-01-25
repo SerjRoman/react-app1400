@@ -8,22 +8,20 @@ import { IProduct } from "../hooks/useProducts"
 
 export interface ICartContext{
     cartProducts: IProduct[];
-    // cartProducts: string
-    isInCart: boolean
 
-    isInCartFunc: (product: IProduct) => boolean
+    isInCart: (product: IProduct) => boolean
 
     addToCart: (product: IProduct) => void
 }
 
-const initialValue: ICartContext = {cartProducts: [], isInCartFunc: (product: IProduct ) => false, addToCart: (product: IProduct ) => {}, isInCart: false}
+const initialValue: ICartContext = {cartProducts: [], isInCart: (product: IProduct ) => false, addToCart: (product: IProduct ) => {},}
 export const cartContext = createContext< ICartContext >(initialValue)
 
 export function App(){
-    let isInCart = false
+    let isInCartResult:boolean = false
     const [cartProducts, setCartProducts] = useState<IProduct[]>([])
 
-    function isInCartFunc(product: IProduct){
+    function isInCart(product: IProduct){
         if (cartProducts.includes(product)){
             return true
         }else{
@@ -32,14 +30,8 @@ export function App(){
     }
 
     function addToCart(product: IProduct ){
-
-        // let isInCart = isInCart
-
-        // isInCartFunc(product)
-
-        const isInCart = isInCartFunc(product)
-        // alert(isInCart)
-        if (isInCart === false){
+        const isInCartResult = isInCart(product)
+        if (isInCartResult === false){
             let array = [...cartProducts, product]
             setCartProducts(array)
         }
@@ -55,7 +47,7 @@ export function App(){
 
     return(
         <div>
-            <cartContext.Provider value={{cartProducts: cartProducts,isInCart: isInCart, addToCart: addToCart, isInCartFunc:isInCartFunc}}>
+            <cartContext.Provider value={{cartProducts: cartProducts, addToCart: addToCart, isInCart:isInCart}}>
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Layout></Layout>}>
