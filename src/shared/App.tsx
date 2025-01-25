@@ -9,37 +9,51 @@ import { IProduct } from "../hooks/useProducts"
 export interface ICartContext{
     cartProducts: IProduct[];
     // cartProducts: string
+    isInCart: boolean
+
     addToCart: (product: IProduct) => void
 }
 
-const initialValue: ICartContext = {cartProducts: [], addToCart: (product: IProduct ) => {}}
+const initialValue: ICartContext = {cartProducts: [], addToCart: (product: IProduct ) => {}, isInCart: false}
 export const cartContext = createContext< ICartContext >(initialValue)
 
 export function App(){
-
+    let isInCart = false
     const [cartProducts, setCartProducts] = useState<IProduct[]>([])
 
-    function checkProduct(product: IProduct , currentProduct: IProduct){
-        if (product.id === currentProduct.id){
-            alert('Товар вже додано до у корзину')
+    function isInCartFunc(product: IProduct){
+        if (cartProducts.includes(product)){
+            return true
         }else{
-            return
+            return false
         }
     }
 
     function addToCart(product: IProduct ){
-        cartProducts.push()// -> [все старые эелменты, новый]
 
-        cartProducts.filter((prod) => checkProduct(prod, product)  )
-            // alert(product.id)
-        // cartProducts.filter((prod) => prod === product)
-        let array = [...cartProducts, product]
-        setCartProducts(array)
+        // let isInCart = isInCart
+
+        isInCartFunc(product)
+
+        // isInCart = isInCartFunc(product)
+        // alert(isInCart)
+        if (isInCart === true){
+            let array = [...cartProducts, product]
+            setCartProducts(array)
+        }
+        else{
+            return
+        }
+
+        
+
+        // let array = [...cartProducts, product]
+        // setCartProducts(array)
     }
 
     return(
         <div>
-            <cartContext.Provider value={{cartProducts: cartProducts, addToCart: addToCart}}>
+            <cartContext.Provider value={{cartProducts: cartProducts,isInCart: isInCart, addToCart: addToCart}}>
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Layout></Layout>}>

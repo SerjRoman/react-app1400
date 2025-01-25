@@ -45,12 +45,24 @@ export function ProductPage(){
                             if (product === undefined){
                                 return 
                             }
+                            let addToCart = cart.addToCart(product)
+
+                            // if(cart.isInCart === true){
+                            //     alert(true)
+                            // }else{
+                            //     alert(false)
+                            // }
 
                             // if (cart.addToCart = 'net')
                             cart.addToCart(product)
-                            setIsModalOpened(true)
+                            alert(cart.isInCart)
+                            if(cart.isInCart = false){
+                                setIsModalOpened(true)
 
-                            setTimeout(closeModal,1000)
+                                setTimeout(closeModal,1000)
+                            }else{
+                                alert('товар вже додано')
+                            }
 
                             event.stopPropagation()
                         }} className="productPageButton" >Кошик</button>
