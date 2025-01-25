@@ -41,7 +41,6 @@ export function ProductPage(){
                     }
                         cart.addToCart(product)}
                     } className="productPageButton" >Кошик</button> */}
-                    <div ref={modalContainerRef}>
                         <button id="cartButton" onClick={(event) => {
                             if (product === undefined){
                                 return 
@@ -64,7 +63,6 @@ export function ProductPage(){
                             <div className="succes-modal">Продукт был успешно добавлен в корзину!</div>
                         </Modal> : undefined
                         }
-                    </div>
                     <button id="buyButton" className="productPageButton">Купити</button>
                 </div>
             </div>
