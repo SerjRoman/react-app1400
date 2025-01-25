@@ -32,6 +32,7 @@ export function Header() {
       
       <SearchBar></SearchBar>
       <button id="basket">
+        <Link to = '/cart'> {/* даємо посилання на сторінку із */}
         <svg
           width="26"
           height="26"
@@ -55,6 +56,7 @@ export function Header() {
           </defs>
         </svg>
         Корзина
+        </Link>
       </button>
       <img
         className="imgProfile"

@@ -1,6 +1,8 @@
 import { useState } from "react"
 import './Product.css'
 import { Link } from "react-router-dom"
+import { useContext } from "react";
+import { cartContext } from "../App";
 
 interface IProductProps {
     id: number,
@@ -10,7 +12,7 @@ interface IProductProps {
 }
 
 export function Product(props:IProductProps){
-    // String.prototype.slice(1, 50)
+    const { addToCart } = useContext(cartContext); //використовуємо хук useContext
     return (
         <Link className="product" to={`/product/${props.id}`}>
             <div className="prodInfo">
@@ -18,7 +20,19 @@ export function Product(props:IProductProps){
                 <img className="prodImg" src={props.img} alt="" id="img"/>
                 <h2 className="Price">Цена: {props.price}</h2>
             </div>
-            <button className="buy">Купить</button>
+            <button 
+                className="buy"
+                onClick={() => addToCart({ //на подію кліку ми додаємо товар до кошику за допомогою функції addToCart
+                    id: props.id,
+                    title: props.name,
+                    image: props.img,
+                    price: props.price,
+                    description: "",
+                    category: ""
+                })}
+
+                >Купить
+            </button>
         </Link>
     )
 }
