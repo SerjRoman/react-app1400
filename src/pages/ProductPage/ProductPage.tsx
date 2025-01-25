@@ -13,7 +13,6 @@ export function ProductPage(){
     const { product, isLoading, error } = useProductById(Number(params.id))
 
     const [isModalOpen, setIsModalOpened] = useState <boolean>(false)
-    const modalContainerRef = useRef<HTMLDivElement | null>(null)
 
 
 
@@ -79,7 +78,6 @@ export function ProductPage(){
                         <Modal className="SuccessModal" 
                         allowModalCloseOutside={true} 
                         onClose={() => {setIsModalOpened(false)}}
-                        container={(modalContainerRef.current) ? modalContainerRef.current : undefined} 
                         >
                             <div className="succes-modal">Продукт был успешно добавлен в корзину!</div>
                         </Modal> : undefined
