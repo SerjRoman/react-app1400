@@ -3,10 +3,16 @@ import { useProductById } from "../../hooks/useProductById"
 
 import "./ProductPage.css"
 import { FidgetSpinner } from "react-loader-spinner";
+import { useContext, useState } from "react";
+import {cartContext} from "../../shared/App"
+import { Modal } from "../../shared/Modal/Modal";
+
 
 export function ProductPage(){ 
     const params = useParams();
+    const [isModalOpen, setIsModalOpened] = useState <boolean>(false)
     const { product, isLoading, error } = useProductById(Number(params.id))
+    const {addToCart} = useContext(cartContext)
     // if (){} else {}
     // что-то==true ? Если условие true : Если условеи будет false
     return <div className="productPage">
@@ -24,7 +30,16 @@ export function ProductPage(){
                 <p>{product?.description}</p>
                 <p>Ціна: £{product?.price}</p>
                 <div className="productPageButtons">
-                    <button id="cartButton" className="productPageButton">Кошик</button>
+                    <button id="cartButton" className="productPageButton" onClick={()=>{
+                        if (product === undefined) {
+                            return
+                        }
+                        setIsModalOpened(true)
+                        addToCart(product)
+                        setTimeout(() => {
+                            setIsModalOpened(false)
+                        }, 1000)
+                    }}>У кошик</button>
                     <button id="buyButton" className="productPageButton">Купити</button>
                 </div>
             </div>
@@ -32,5 +47,17 @@ export function ProductPage(){
     : <div>{error}</div>
         
         )}
+    
+    {
+        isModalOpen
+        ? <Modal 
+            className="successModal" 
+            allowModalCloseOutside={false} 
+            onClose={() => {setIsModalOpened(false)}}
+        >
+            <p>Продукт был успешно добавлен в корзину! :P</p>
+        </Modal>
+        : undefined
+    } 
     </div>
 }
