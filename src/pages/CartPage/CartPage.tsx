@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { cartContext } from "../../shared/App";
+import { cartContext } from "../../context/cartContext";
+
 
 // (●'◡'●)
 export function CartPage(){
