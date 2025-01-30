@@ -41,7 +41,6 @@ export function ProductPage(){
                                 return 
                             }
 
-
                             const isInCartFunc = isInCart(product)
                             
                             
@@ -56,8 +55,8 @@ export function ProductPage(){
                             event.stopPropagation()
                         }} className="productPageButton" >Кошик</button>
                         { isModalOpen === true ? 
-                        <Modal className="SuccessModal" 
-                        allowModalCloseOutside={true} 
+                        <Modal className="SuccessModal"
+                        allowModalCloseOutside={false} 
                         onClose={() => {setIsModalOpened(false)}}
                         >
                             <div className="succes-modal">Продукт был успешно добавлен в корзину!</div>
