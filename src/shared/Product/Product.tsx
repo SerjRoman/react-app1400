@@ -1,4 +1,4 @@
-import { useState } from "react"
+
 import './Product.css'
 import { Link } from "react-router-dom"
 

@@ -3,8 +3,7 @@ import "./Header.css";
 import { SearchBar } from "../SearchBar/SearchBar";
 
 
-export function Header({ setSearch, search }: IHeaderProps) {
-
+export function Header() {
   return (
     <div className="headerCSS">
       <Link to={"/"}>
