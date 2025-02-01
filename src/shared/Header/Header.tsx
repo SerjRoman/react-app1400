@@ -32,7 +32,7 @@ export function Header({ setSearch, search }: IHeaderProps) {
       </Link>
       
       <SearchBar></SearchBar>
-      <button id="basket">
+      <Link to={'/cart'} id="basket">
         <svg
           width="26"
           height="26"
@@ -56,7 +56,7 @@ export function Header({ setSearch, search }: IHeaderProps) {
           </defs>
         </svg>
         Корзина
-      </button>
+      </Link>
       <img
         className="imgProfile"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s"
