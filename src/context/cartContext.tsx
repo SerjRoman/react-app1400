@@ -53,7 +53,7 @@ export function CartContextProvider(props: ICartContextProviderProps) {
         const newCartProducts = cartProducts.map((product)=>{
             if(product.id === id){
                 product.amount += 1
-                product.price += product.price
+                // product.price += product.price
             }
             return product
         })
@@ -64,7 +64,7 @@ export function CartContextProvider(props: ICartContextProviderProps) {
         const newCartProducts = cartProducts.map((product)=>{
             if(product.id === id){
                 product.amount -= 1
-                product.price -= product.price
+                // product.price -= product.price
                 if(product.amount < 1){
                     product.amount = 1
                 }
