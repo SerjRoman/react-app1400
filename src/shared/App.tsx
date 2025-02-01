@@ -2,7 +2,6 @@ import { CartContextProvider } from "../context/cartContext"
 import { AppRoutes } from "../routes/Routes"
 
 export function App(){
-    // ou eeeeee
     return(
         <div>
             <CartContextProvider>
@@ -11,7 +10,3 @@ export function App(){
         </div>
     )
 }
-
-/*
-   o((⊙﹏⊙))o. пупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупу...
-*/ 
