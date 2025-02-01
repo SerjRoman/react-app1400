@@ -7,6 +7,9 @@ interface ICartContext{
     addToCart: (product: IProduct) => void;
     deleteFromCart: (id: number) => void; 
     isInCart: (id: number) => boolean;
+    plus: (id: number) => void;
+    minus: (id: number) => void;
+    deleteAll: () => void;
 }
 
 const initialValue: ICartContext = {
@@ -14,6 +17,9 @@ const initialValue: ICartContext = {
     addToCart: (product: IProduct) => {}, 
     deleteFromCart: (id: number) => {},
     isInCart: (id: number) => false,
+    plus: (id: number) => {},
+    minus: (id: number) => {},
+    deleteAll: () => {},
 };
 
 export const cartContext = createContext< ICartContext >(initialValue)
@@ -31,6 +37,7 @@ export function CartContextProvider(props: ICartContextProviderProps) {
     const [cartProducts, setCartProducts] = useState<IProduct[]>([])
 
     function addToCart(product: IProduct){
+        product.amount = 1
         let array = [...cartProducts, product]
         setCartProducts(array)
     }
@@ -42,13 +49,36 @@ export function CartContextProvider(props: ICartContextProviderProps) {
         setCartProducts(filterProducts)
     }
 
+    function plus(id: number) {
+        const newCartProducts = cartProducts.map((product)=>{
+            if(product.id === id){
+                product.amount += 1
+                product.price += product.price
+            }
+            return product
+        })
+        setCartProducts(newCartProducts)
+    }
+
+    function minus(id: number) {
+        const newCartProducts = cartProducts.map((product)=>{
+            if(product.id === id){
+                product.amount -= 1
+                product.price -= product.price
+                if(product.amount < 1){
+                    product.amount = 1
+                }
+            }
+            return product
+        })
+        setCartProducts(newCartProducts)
+    }
+
+    function deleteAll(){
+        setCartProducts([])
+    }
+
     function isInCart(id: number) {
-        // id = 4
-        // [{id: 1}, {id: 2}, {id: 3},{id: 4}]
-        // {id: 1} -> 1 !== 4 -> true
-        // {id: 2} -> 2 !== 4 -> true
-        // {id: 3} -> 3 !== 4 -> true
-        // {id: 4} -> 4 !== 4 -> false
         const result = cartProducts.some((product)=>{
             return product.id === id 
         });
@@ -61,7 +91,10 @@ export function CartContextProvider(props: ICartContextProviderProps) {
                 cartProducts: cartProducts,
                 addToCart: addToCart,
                 deleteFromCart: deleteFromCart,
-                isInCart: isInCart
+                isInCart: isInCart,
+                plus: plus,
+                minus: minus,
+                deleteAll: deleteAll
             }}>
                 { children }
         </cartContext.Provider>
