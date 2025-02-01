@@ -1,0 +1,29 @@
+.productDiv{
+    width: 1270px;
+    height: 250px;
+    margin: 10px;
+    display: flex;
+}
+
+.cartImage{
+    width: 230px;
+    height: 230px;
+}
+
+.cartButt{
+    width: 150px;
+    height: 50px;
+    border-radius: 20px;
+    padding-block: 13px;
+    background-color: #FAF0E6;
+    margin: 10px;
+    border: 0;
+}
+
+.contentDiv{
+    margin: 10px;
+}
+
+.deleteButt{
+    color: red;
+}

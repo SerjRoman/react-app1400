@@ -7,6 +7,7 @@ interface ICartContext{
     addToCart: (product: IProduct) => void;
     deleteFromCart: (id: number) => void; 
     isInCart: (id: number) => boolean;
+    deleteAllFromCart: () => void;
 }
 
 const initialValue: ICartContext = {
@@ -14,6 +15,7 @@ const initialValue: ICartContext = {
     addToCart: (product: IProduct) => {}, 
     deleteFromCart: (id: number) => {},
     isInCart: (id: number) => false,
+    deleteAllFromCart: () => {},
 };
 
 export const cartContext = createContext< ICartContext >(initialValue)
@@ -54,6 +56,10 @@ export function CartContextProvider(props: ICartContextProviderProps) {
         });
         return result //😲
     }
+    
+    function deleteAllFromCart() {
+        setCartProducts([])
+    }
 
     return(
         <cartContext.Provider 
@@ -61,7 +67,8 @@ export function CartContextProvider(props: ICartContextProviderProps) {
                 cartProducts: cartProducts,
                 addToCart: addToCart,
                 deleteFromCart: deleteFromCart,
-                isInCart: isInCart
+                isInCart: isInCart,
+                deleteAllFromCart:deleteAllFromCart
             }}>
                 { children }
         </cartContext.Provider>

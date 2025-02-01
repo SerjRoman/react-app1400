@@ -2,7 +2,7 @@ import { useState } from "react"
 import './Product.css'
 import { Link } from "react-router-dom"
 import { useContext } from "react";
-import { cartContext } from "../App";
+import { cartContext } from "../../context/cartContext";
 
 interface IProductProps {
     id: number,
