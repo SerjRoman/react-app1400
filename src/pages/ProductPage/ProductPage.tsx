@@ -3,15 +3,15 @@ import { useProductById } from "../../hooks/useProductById"
 
 import "./ProductPage.css"
 import { FidgetSpinner } from "react-loader-spinner";
-import { useContext, useState } from "react";
-import {cartContext} from "../../shared/App"
+import { useState } from "react";
 import { Modal } from "../../shared/Modal/Modal";
+import { useCartContext } from "../../context/cartContext";
 
 export function ProductPage(){ 
     const params = useParams();
     const [isModalOpen, setIsModalOpened] = useState <boolean>(false)
     const { product, isLoading, error } = useProductById(Number(params.id))
-    const {addToCart} = useContext(cartContext)
+    const {addToCart, isInCart} = useCartContext()
     // if (){} else {}
     // что-то==true ? Если условие true : Если условеи будет false
     return <div className="productPage">
@@ -32,6 +32,10 @@ export function ProductPage(){
                     <button id="cartButton" className="productPageButton" onClick={()=>{
                         if (product === undefined) {
                             return
+                        }
+                        
+                        if (isInCart(product.id)) {
+                            return //😲
                         }
                         setIsModalOpened(true)
                         addToCart(product)
