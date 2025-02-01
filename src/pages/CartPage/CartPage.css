@@ -1,0 +1,135 @@
+.CartPage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.CartPage h1{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    color: #000000;
+}
+
+.AllCartItems{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* padding: 10px; */
+    gap: 10px;
+    position: relative;
+    width: 1280px;
+    height: 700px;
+    overflow-y: scroll;
+}
+
+.CartItem{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 20px;
+    width: 100%;
+    height: 250px;
+    border-bottom: 1px solid #000000;
+}
+
+.CartItemImg{
+    width: 230px;
+    height: 230px;
+}
+
+.CartItemText{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 817px;
+    height: 100%;
+}
+
+.CartItemText p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+}
+
+.CountButtons{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.Plus,
+.Minus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 32px;
+    background: #404040;
+    font-size: 40px;
+    font-family: 'Inter';
+    font-weight: 100;
+    border: none;
+    line-height: 1px;
+    cursor: pointer;
+}
+
+.Plus{
+    background-color: #96FA99;
+}
+
+.Minus{
+    background-color: #F88686;
+}
+
+.TotalCart{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    gap: 50px;
+    width: 100%;
+    height: 100px;
+}
+
+.TotalPrice{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    color: #000000;
+}
+
+.Buyall,
+.DeleteAll{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    background: #FAF0E6;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.BuyAll{
+    color: #000000;
+}
+
+.DeleteAll{
+    color: #C80B0B;
+}

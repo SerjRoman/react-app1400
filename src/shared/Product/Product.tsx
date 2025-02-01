@@ -1,7 +1,6 @@
 import { useContext, useState } from "react"
 import './Product.css'
 import { Link } from "react-router-dom"
-import { cartContext, ICartContext } from "../App"
 
 interface IProductProps {
     id: number,
