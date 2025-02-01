@@ -1,25 +1,19 @@
 import { useContext } from "react";
-import { cartContext } from "../../shared/App";
+import { cartContext } from "../../context/cartContext";
 
+
+// (●'◡'●)
 export function CartPage(){
-    const { cartProducts, removeFromCart } = useContext(cartContext); //використовуємо хук useContext
-    return (
-        <div>
-            <h1>Кошик</h1>
-            {cartProducts.length > 0 ? ( //якщо довжина масиву продуктів у кошику більше 0 то відображаємо його
-                <div>
-                    {cartProducts.map((product) => ( //беремо весь масив продуктів у кошику для його відображення
-                        <div key={product.id}>
-                            <img src={product.image}/>
-                            <p>{product.title}</p>
-                            <p>Ціна: {product.price}</p>
-                            <button onClick={() => removeFromCart(product.id)} >Видалити</button> {/* при натисканні на кнопку викликаємо функцію removeFromCart*/}
-                        </div>
-                    ))}
-                </div>
-            ) : (
-                <p>У кошику поки що нічого немає</p> //коли нічого в масиві продуктів в кошику немає
-            )}
-        </div>
-    );
+    const {cartProducts, deleteFromCart} = useContext(cartContext)
+    return (<div>
+        {cartProducts.map(product =>{
+            return <div>
+                <h1>{product.title}</h1>
+                <p>{product.description}</p>
+                <p>{product.price}</p>
+                <img src={product.image} alt="" />
+                <button onClick={()=>{deleteFromCart(product.id)}}>Delete</button>
+            </div>
+        })}
+    </div>)
 }
