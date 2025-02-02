@@ -1,7 +1,7 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import "./SearchBar.css"
 import { Modal } from "../Modal/Modal"
-import { useProducts } from "../../hooks/useProducts"
+import { IProduct, useProducts } from "../../hooks/useProducts"
 import { Link } from "react-router-dom"
 import { IProduct } from "../../hooks/useProducts"
 
