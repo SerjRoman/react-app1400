@@ -1,0 +1,130 @@
+.cart-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-height: 80vh;
+}
+
+.products-in-cart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 700px;
+    overflow: scroll;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.cart-h1{
+    text-align: center;
+    font-size: 48px;
+    margin: 0 auto;
+}
+
+.product-in-cart{
+    display: flex;
+    width: 95%;
+    /* height: 250px; */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    /* padding-bottom:  */
+    border-bottom: 1px solid black;
+}
+
+.product-in-cart-img{
+    width: 230px;
+    /* height: 230px; */
+    height: 200px;
+}
+
+.cart-item-text{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    text-wrap: wrap;
+    /* height: 230px; */
+}
+
+.amount-buttons{
+    width: 90px;
+    display: flex;
+    gap: 10px;
+}
+
+.amount-button{
+    width: 40px;
+    height: 40px;
+    /* padding: 13px; */
+    border-radius: 32px;
+    border: none;
+    /* font-size: 20px; */
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.add-item-button{
+    background-color: #96FA99;
+}
+
+.cart-div button:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.remove-item-button{
+    background-color: #F88686;
+}
+
+.cart-item-buttons{
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    height: 230px;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cart-item-buttons button{
+    width: 150px;
+    height: 50px;
+    background-color: #FAF0E6;
+    padding: 13px;
+    border-radius: 20px;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.cart-div .delete-button{
+    color: red;
+}
+
+.total-price{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: white;
+    height: 100px;
+    border-radius: 16px;
+    gap: 50px;
+    padding: 10px;
+}
+
+.total-price h3{
+    font-size: 48px;
+}
+
+
+.total-price button{
+    width: 200px;
+    height: 50px;
+    background-color: #FAF0E6;
+    padding: 13px;
+    border-radius: 20px;
+    border: none;
+    transition: all 0.2s ease;
+}

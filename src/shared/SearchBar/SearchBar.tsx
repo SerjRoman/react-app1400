@@ -3,7 +3,7 @@ import "./SearchBar.css"
 import { Modal } from "../Modal/Modal"
 import { IProduct, useProducts } from "../../hooks/useProducts"
 import { Link } from "react-router-dom"
-import { IProduct } from "../../hooks/useProducts"
+// import { IProduct } from "../../hooks/useProducts"
 
 export function SearchBar(){
     //стейт для визначення чи відкрито модалка
