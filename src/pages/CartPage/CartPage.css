@@ -27,3 +27,43 @@
 .deleteButt{
     color: red;
 }
+
+.amountDiv{
+    margin-top: 10%;
+    padding: 10px;
+}
+
+.incrementAmountButt{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: green;
+
+}
+
+.decrementAmountButt{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: red;
+}
+
+.cart-footer-buy-all{
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    padding-block: 13px;
+    background-color: #FAF0E6;
+    margin: 10px;
+    border: 0;
+}
+
+.cartFooter-delete-all{
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    padding-block: 13px;
+    background-color: #FAF0E6;
+    margin: 10px;
+    border: 0;
+}

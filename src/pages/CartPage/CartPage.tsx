@@ -33,9 +33,9 @@ export function CartPage(){
                     <p>Price: {product.price}$</p>
                     <p>Number of items: {amount}</p>
                 </div>
-                <div>
-                    <button onClick={incrementAmount}>Add 1</button>
-                    <button onClick={decrementAmount} >Remove 1</button>
+                <div className="amountDiv">
+                    <button onClick={incrementAmount} className="incrementAmountButt"><h1>+</h1></button>
+                    <button onClick={decrementAmount} className="decrementAmountButt"><h1>-</h1></button>
                 </div>
             </div>
                 <div className="buttDiv">
@@ -47,10 +47,10 @@ export function CartPage(){
             )
         })}
         <div className="cart-footer">
-            <p className="cart-footer-total-price">Total price: {totalPrice}</p>
+            <h1 className="cart-footer-total-price">Total price: {totalPrice}</h1>
             <div className="cart-footer-buttons">
-                <button className="cart-footer-buy-all">Buy all</button>
-                <button className="cartFooter-delete-all" onClick={() => {deleteAllFromCart()}}>Delete all</button>
+                <button className="cart-footer-buy-all"><h1>Buy All</h1></button>
+                <button className="cartFooter-delete-all" onClick={() => {deleteAllFromCart()}}><h1>Delete all from cart</h1></button>
             </div>
         </div>
     </div>)
