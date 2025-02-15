@@ -35,9 +35,9 @@ export function ProductPage(){
                             return
                         }
                         
-                        if (isInCart(product.id)) {
-                            return //😲
-                        }
+                        // if (isInCart(product.id)) {
+                        //     return //😲
+                        // }
                         setIsModalOpened(true)
                         addToCart(product)
                         setTimeout(() => {

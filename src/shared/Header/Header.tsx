@@ -8,6 +8,7 @@ export function Header() {
     <div className="headerCSS">
       <Link to={"/"}>
         <img
+          id="headerLogo"
           src="https://cdn-icons-png.flaticon.com/512/7817/7817669.png"
           alt=""
         />
