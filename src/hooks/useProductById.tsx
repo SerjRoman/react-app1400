@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { IProduct } from './useProducts'
 
 
-// https://fakestoreapi.com/products/id
+// https://fakestoreapi.com/products/id aboba
 export function useProductById(id: number) {
     const [product, setProduct] = useState<IProduct>()
     const [isLoading, setIsLoading] = useState(false)

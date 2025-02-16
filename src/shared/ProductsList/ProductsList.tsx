@@ -63,7 +63,7 @@ export function ProductsList(){
                 // нужен для идентифицирования reactом элементов которые отображаются
                     // <img src="" alt="" />
                 
-                return <Product key = {product.id} id={product.id} name = {product.title} price = {product.price} img = {product.image}></Product>
+                return <Product key = {product.id} id={product.id} name = {product.name} price = {product.price} img = {product.src}></Product>
             }) : (<div>{error}</div>) : (<div className="vortex"><Vortex
                 visible={true}
                 height="200"
