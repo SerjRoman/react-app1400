@@ -62,6 +62,6 @@ export function ProductPage(){
             <p>Продукт был успешно добавлен в корзину! :P</p>
         </Modal>
         : undefined
-    } 
+    }
     </div>
 }
