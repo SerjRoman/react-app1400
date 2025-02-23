@@ -8,10 +8,10 @@ export function CartPage(){
     return (<div>
         {cartProducts.map(product =>{
             return <div>
-                <h1>{product.title}</h1>
+                <h1>{product.name}</h1>
                 <p>{product.description}</p>
                 <p>{product.price}</p>
-                <img src={product.image} alt="" />
+                <img src={product.src} alt="" />
                 <button onClick={()=>{deleteFromCart(product.id)}}>Delete</button>
             </div>
         })}

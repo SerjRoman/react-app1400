@@ -12,9 +12,13 @@ export function useProductById(id: number) {
         async function getProduct() {
             try {
                 setIsLoading(true)
-                const response = await fetch(`https://fakestoreapi.com/products/${id}`)
-                const product = await response.json()
-                setProduct(product)
+                const response = await fetch(`http://localhost:8000/api/product/${id}`)
+                const result = await response.json()
+                if (result.status === 'success') {
+                    setProduct(result.data)
+                } else {
+                    setError(result.message)
+                }
             }
             catch (error) {
                 // instanceof

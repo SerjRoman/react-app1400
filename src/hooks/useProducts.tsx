@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { ICategory } from "./useCategories"
 
 export interface IProduct{
     id: number,
@@ -7,6 +8,7 @@ export interface IProduct{
     price: number,
     src: string,
     categoryId: number,
+    Category: ICategory
 }
 
 let data = {
