@@ -6,17 +6,16 @@ interface ILoginForm {
     password: string,
 }
 
-// yup validation
 export function LoginPage (){
-    // Пишем скобки, которые отвечают за то, что мы будем деструктуризировать
-    const {user, login} = useUserContext()
+
+    const {user, login} = useUserContext() //виклик хука для використання контексту користувача
     const {register: register, handleSubmit, formState} = useForm <ILoginForm>({
         mode: 'onSubmit'
     })
     
     function onSubmit(data: ILoginForm){
         console.log(data)
-        login(data.email, data.password)
+        login(data.email, data.password) //виклик функції для входу користувача
     }
     
     

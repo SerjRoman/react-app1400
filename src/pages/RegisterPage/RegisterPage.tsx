@@ -10,8 +10,7 @@ interface IRegisterForm {
 
 // yup validation
 export function RegisterPage (){
-    const {user, register} = useUserContext();
-    // Пишем скобки, которые отвечают за то, что мы будем деструктуризировать
+    const {user, register} = useUserContext(); // виклик хука для використання контексту користувача
     const {register: registerUser, handleSubmit, formState} = useForm <IRegisterForm>({
         mode: 'onSubmit'
     })

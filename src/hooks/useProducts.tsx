@@ -8,7 +8,8 @@ export interface IProduct{
     price: number,
     src: string,
     categoryId: number,
-    Category: ICategory
+    Category: ICategory,
+    amount?: number
 }
 
 let data = {
