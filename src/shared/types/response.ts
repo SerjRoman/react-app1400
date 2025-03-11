@@ -8,4 +8,5 @@ export interface ISuccess<T> {
     data: T
 }
 
+// создаем тип response который получает либо ошибку или успешный результат
 export type Response<T> = IError | ISuccess<T>

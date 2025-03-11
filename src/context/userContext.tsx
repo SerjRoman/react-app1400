@@ -1,6 +1,7 @@
 import { createContext, useContext, ReactNode, useState } from "react"
 import { Response } from '../shared/types/response'
 
+// создаем интерфейс для юзера
 interface IUser {
     email: string
     username: string
@@ -8,6 +9,7 @@ interface IUser {
     role: string
 }
 
+// создаем интерфейс для контекста
 interface IUserContext{
     user: IUser | null
     login: (email: string, password: string) => void
@@ -15,25 +17,32 @@ interface IUserContext{
     isAuthenticated: () => boolean
 }
 
+// создаем первозначальное значение для контекста
 const initialValue: IUserContext = {
     user: null,
     login: (email: string, password: string) => {},
     register: (email: string, username: string, image: string, password: string) => {},
     isAuthenticated: () => false,
 }
+
+// создаем контекст
 const userContext = createContext<IUserContext>(initialValue)
 
+// создаем хук который получает контект вместо useContext
 export function useUserContext(){
     return useContext(userContext)
 }
 
+// создаем интерфейс для пропсов контекста 
 interface IUserContextProviderProps{
     children?: ReactNode
 }
 
 export function UserContextProvider(props: IUserContextProviderProps){
+    // создаем стейт который хранит юзера
     const [user, setUser] = useState<IUser | null>(null)
 
+    // создаем функцию для получания юзера по токену
     async function getData(token: string){
         try{
             const response = await fetch('http://localhost:8000/api/user/me', {
@@ -50,6 +59,8 @@ export function UserContextProvider(props: IUserContextProviderProps){
         }
     }
 
+
+    // создаем функцию для логина и получаем токен и сразу же его отправляем для того чтоб получить юзера
     async function login(email: string, password: string){
         try{
             const response = await fetch('http://localhost:8000/api/user/login', { 
@@ -68,6 +79,7 @@ export function UserContextProvider(props: IUserContextProviderProps){
         }
     }
     
+    // создаем функцию для регистрации и получаем токен и сразу же его отправляем для того чтоб получить юзера
     async function register(email: string, username: string, image: string, password: string){
         try {
             const response = await fetch('http://localhost:8000/api/user/register', { 

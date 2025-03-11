@@ -17,6 +17,7 @@ const initialValue: ICartContext = {
 
 export const cartContext = createContext< ICartContext >(initialValue)
 
+// создаем хук который получает контект вместо useContext
 export function useCartContext() {
     return useContext(cartContext)
 }
