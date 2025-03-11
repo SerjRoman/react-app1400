@@ -1,6 +1,5 @@
-import { createContext, ReactNode, useState } from "react"
+import { createContext, ReactNode, useState, useContext } from "react"
 import { IProduct } from "../hooks/useProducts"
-import { useContext } from "react";
 
 interface ICartContext{
     cartProducts: IProduct[];
