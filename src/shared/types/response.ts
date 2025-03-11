@@ -1,3 +1,4 @@
+// файл с типизацией для обьекта reponse с использованием generic типов
 export interface IError {
     status: 'error'
     message: string

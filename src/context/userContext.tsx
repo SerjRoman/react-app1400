@@ -1,6 +1,7 @@
 import { createContext, useContext, ReactNode, useState } from "react"
 import { Response } from '../shared/types/response'
 
+// интерфейс для типизации юзера
 interface IUser {
     email: string
     username: string
@@ -8,6 +9,8 @@ interface IUser {
     role: string
 }
 
+
+// интерфейс для типизации контекста юзера
 interface IUserContext{
     user: IUser | null
     login: (email: string, password: string) => void
@@ -15,25 +18,33 @@ interface IUserContext{
     isAuthenticated: () => boolean
 }
 
+// начальное значение для контекста юзера
 const initialValue: IUserContext = {
     user: null,
     login: (email: string, password: string) => {},
     register: (email: string, username: string, image: string, password: string) => {},
     isAuthenticated: () => false,
 }
+
+// создание контекста юзера
 const userContext = createContext<IUserContext>(initialValue)
 
+// создание хука для получения контекста юзера
 export function useUserContext(){
     return useContext(userContext)
 }
 
+// типизация для props провайдера контекста
 interface IUserContextProviderProps{
     children?: ReactNode
 }
 
+// создание и экспорт компонента провайдера
 export function UserContextProvider(props: IUserContextProviderProps){
+    // стостояние для передачи данных юзера
     const [user, setUser] = useState<IUser | null>(null)
 
+    // функция, которая отправляет запрос на сервер для получения данных о юзере по его токену
     async function getData(token: string){
         try{
             const response = await fetch('http://localhost:8000/api/user/me', {
@@ -50,6 +61,7 @@ export function UserContextProvider(props: IUserContextProviderProps){
         }
     }
 
+    // функция, которая отправляет запрос на сервер для авторизации 
     async function login(email: string, password: string){
         try{
             const response = await fetch('http://localhost:8000/api/user/login', { 
@@ -68,6 +80,7 @@ export function UserContextProvider(props: IUserContextProviderProps){
         }
     }
     
+    // функция, которая отправляет запрос на сервер для регистрации 
     async function register(email: string, username: string, image: string, password: string){
         try {
             const response = await fetch('http://localhost:8000/api/user/register', { 
@@ -88,6 +101,7 @@ export function UserContextProvider(props: IUserContextProviderProps){
         }
     }
 
+    // возвращаем провайдер контекста з указаным value и children
     return <userContext.Provider 
     value={{
         user: user,
