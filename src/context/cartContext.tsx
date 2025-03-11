@@ -1,6 +1,5 @@
-import { createContext, ReactNode, useState } from "react"
+import { createContext, ReactNode, useState, useContext } from "react"
 import { IProduct } from "../hooks/useProducts"
-import { useContext } from "react";
 
 interface ICartContext{
     cartProducts: IProduct[];
@@ -24,6 +23,7 @@ const initialValue: ICartContext = {
 
 export const cartContext = createContext< ICartContext >(initialValue)
 
+// создаем хук который получает контект вместо useContext
 export function useCartContext() {
     return useContext(cartContext)
 }

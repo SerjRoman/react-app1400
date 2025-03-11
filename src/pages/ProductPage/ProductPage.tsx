@@ -17,16 +17,16 @@ export function ProductPage(){
     // что-то==true ? Если условие true : Если условеи будет false
     return <div className="productPage">
         { isLoading === true ? (<div className="spiner"><FidgetSpinner
-                visible={true}
-                height="200"
-                width="200"
-                ariaLabel="fidget-spinner-loading"
-                wrapperStyle={{}}
-                wrapperClass="fidget-spinner-wrapper"
-            /></div>) : ( !error ? <>  
-            <img id="productImg" src={product?.image} alt="" />
+  visible={true}
+  height="200"
+  width="200"
+  ariaLabel="fidget-spinner-loading"
+  wrapperStyle={{}}
+  wrapperClass="fidget-spinner-wrapper"
+    /></div>) : ( !error ? <>  
+            <img id="productImg" src={product?.src} alt="" />
             <div className="productPageDesc">
-                <h1>{product?.title}</h1>
+                <h1>{product?.name}</h1>
                 <p>{product?.description}</p>
                 <p>Ціна: £{product?.price}</p>
                 <div className="productPageButtons">
@@ -62,6 +62,6 @@ export function ProductPage(){
             <p>Продукт был успешно добавлен в корзину! :P</p>
         </Modal>
         : undefined
-    } 
+    }
     </div>
 }
