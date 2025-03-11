@@ -21,7 +21,7 @@ export function ProductsList(){
 
     const [filteredProducts, setFilteredProducts] = useState(products)
     const [selectedCategory, setSelectedCategory] = useState('All')
-    const { categories } = useCategories()
+    const { categories, isLoading: categoryIsLoading, error: categoryError } = useCategories()
     
 
     useEffect(()=>{
@@ -29,7 +29,7 @@ export function ProductsList(){
             setFilteredProducts(products)
         } else{
             setFilteredProducts(products.filter( (product)=>{
-                return product.category === selectedCategory
+                return product.Category.name === selectedCategory
             }))
         }
         console.log(selectedCategory)
@@ -53,7 +53,7 @@ export function ProductsList(){
         }>
             <option value = 'All'>All</option>
             {categories.map(category => {
-                return <option value={category}>{category}</option>
+                return <option value={category.name}>{category.name}</option>
             })}
         </select>
         </div>
@@ -63,7 +63,7 @@ export function ProductsList(){
                 // нужен для идентифицирования reactом элементов которые отображаются
                     // <img src="" alt="" />
                 
-                return <Product key = {product.id} id={product.id} name = {product.title} price = {product.price} img = {product.image}></Product>
+                return <Product key = {product.id} id={product.id} name = {product.name} price = {product.price} img = {product.src}></Product>
             }) : (<div>{error}</div>) : (<div className="vortex"><Vortex
                 visible={true}
                 height="200"
@@ -76,3 +76,5 @@ export function ProductsList(){
         </div>
     </div>
 }
+
+// Ещкере бархотніе тяги
