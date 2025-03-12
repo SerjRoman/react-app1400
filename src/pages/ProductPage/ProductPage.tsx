@@ -23,9 +23,9 @@ export function ProductPage(){
     wrapperStyle={{}}
     wrapperClass="fidget-spinner-wrapper"
     /></div>) : ( !error ? <>  
-            <img id="productImg" src={product?.image} alt="" />
+            <img id="productImg" src={product?.src} alt="" />
             <div className="productPageDesc">
-                <h1>{product?.title}</h1>
+                <h1>{product?.name}</h1>
                 <p>{product?.description}</p>
                 <p>Ціна: £{product?.price}</p>
                 <div className="productPageButtons">
@@ -61,6 +61,6 @@ export function ProductPage(){
             <p>Продукт был успешно добавлен в корзину! :P</p>
         </Modal>
         : undefined
-    } 
+    }
     </div>
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { IProduct } from './useProducts'
 
 
-// https://fakestoreapi.com/products/id
+// https://fakestoreapi.com/products/id aboba
 export function useProductById(id: number) {
     const [product, setProduct] = useState<IProduct>()
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -11,9 +11,14 @@ export function useProductById(id: number) {
     useEffect(() => {
         async function getProduct() {
             try {
-                const response = await fetch(`https://fakestoreapi.com/products/${id}`)
-                const product = await response.json()
-                setProduct(product)
+                setIsLoading(true)
+                const response = await fetch(`http://localhost:8000/api/product/${id}`)
+                const result = await response.json()
+                if (result.status === 'success') {
+                    setProduct(result.data)
+                } else {
+                    setError(result.message)
+                }
             }
             catch (error) {
                 // instanceof

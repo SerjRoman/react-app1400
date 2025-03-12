@@ -7,35 +7,16 @@ import "./CartPage.css"
 
 // (●'◡'●)
 export function CartPage(){
-    const [cartPrice, setCartPrice] = useState< number >()
-    const {cartProducts} = useContext(cartContext)
-
-    useEffect(() => {
-        let result: number = cartProducts.reduce((price, product) => price + product.price, 0);
-        setCartPrice(result)
-    }, [cartProducts])
-
-
-    return (
-        <div className="cartPage">
-            <h1 className="cartTitle">Корзина</h1>
-            <div className="cartProducts">
-                {cartProducts.map(product => {
-                    return (
-                        <CartProduct
-                            key = {product.id}
-                            id={product.id}
-                            title = {product.title}
-                            description = {product.description}
-                            price = {product.price}
-                            image = {product.image}
-                        ></CartProduct>
-                    )
-                })}
+    const {cartProducts, deleteFromCart} = useContext(cartContext)
+    return (<div>
+        {cartProducts.map(product =>{
+            return <div>
+                <h1>{product.name}</h1>
+                <p>{product.description}</p>
+                <p>{product.price}</p>
+                <img src={product.src} alt="" />
+                <button onClick={()=>{deleteFromCart(product.id)}}>Delete</button>
             </div>
-            <div className="cartTotal">
-                <h1>Итого: {cartPrice}$</h1>
-            </div>
-        </div>
-    )
+        })}
+    </div>)
 }

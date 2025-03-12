@@ -1,12 +1,44 @@
 import { useEffect, useState } from "react"
+import { ICategory } from "./useCategories"
 
 export interface IProduct{
     id: number,
-    title: string,
-    description: string,
+    name: string,
+    description: string | null,
     price: number,
-    image: string,
-    category: string,
+    src: string,
+    categoryId: number,
+    Category: ICategory
+}
+
+let data = {
+    "status": "success",
+    "data": [
+        {
+            "id": 1,
+            "name": "Keyboard1",
+            "src": "",
+            "price": 5,
+            "description": null,
+            "categoryId": 1
+        },
+        {
+            "id": 2,
+            "name": "Keyboard1",
+            "src": "",
+            "price": 5,
+            "description": null,
+            "categoryId": 1
+        },
+        {
+            "id": 3,
+            "name": "Keyboard1",
+            "src": "",
+            "price": 5,
+            "description": null,
+            "categoryId": 2
+        }
+    ]
 }
 
 export function useProducts(){
@@ -17,9 +49,14 @@ export function useProducts(){
     useEffect(()=>{
         async function getProducts(){
             try{
-                const response = await fetch('https://fakestoreapi.com/products')
-                const products = await response.json()
-                setProducts(products)
+                setIsLoading(true)
+                const response = await fetch('http://localhost:8000/api/product/all')
+                const result = await response.json()
+                if (result.status === 'error') {
+                    setError(result.message)
+                } else {
+                    setProducts(result.data)
+                }
             }
             catch(error){
                 const err = error instanceof Error ? error.message : undefined
