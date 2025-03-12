@@ -1,9 +1,12 @@
 import { CartContextProvider } from "../context/cartContext"
 import { UserContextProvider } from "../context/userContext"
 import { AppRoutes } from "../routes/Routes"
+import { useEffect } from "react"
+
+
 
 export function App(){
-    // ou eeeeee
+  
     return(
         <div>
             <UserContextProvider>
@@ -18,3 +21,4 @@ export function App(){
 /*
    o((⊙﹏⊙))o. пупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупупу...
 */ 
+

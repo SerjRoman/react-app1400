@@ -1,5 +1,6 @@
 import { createContext, useContext, ReactNode, useState } from "react"
 import { Response } from '../shared/types/response'
+import { useEffect } from "react"
 
 interface IUser {
     email: string
@@ -63,6 +64,8 @@ export function UserContextProvider(props: IUserContextProviderProps){
                 return
             }
             getData(result.data)
+            // e[lwqrlkeow;lsrgihlfdgxckflhkasetJpgirndlkyjameh;togirsfldoa]
+            localStorage.setItem('token', result.data)
         } catch(error){
 
         }
@@ -82,12 +85,19 @@ export function UserContextProvider(props: IUserContextProviderProps){
                 return;
             }
             getData(result.data)
+            localStorage.setItem('token', result.data)
 
         } catch(error){
 
         }
     }
-
+    useEffect(()=>{
+        const token = localStorage.getItem('token')
+        if(!token){
+            return
+        }
+        getData(token)
+    },[])
     return <userContext.Provider 
     value={{
         user: user,

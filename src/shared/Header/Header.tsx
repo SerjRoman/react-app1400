@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
 import { SearchBar } from "../SearchBar/SearchBar";
+import { useUserContext } from "../../context/userContext";
 
 
 export function Header() {
+  const { user } = useUserContext()
+
+
   return (
     <div className="headerCSS">
       <Link to={"/"}>
@@ -58,7 +62,8 @@ export function Header() {
       </Link>
       <img
         className="imgProfile"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s"
+        src={user ? user.image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s" }
+        // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s"
         alt=""
       />
     </div>
