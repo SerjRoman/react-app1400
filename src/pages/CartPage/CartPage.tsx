@@ -21,28 +21,12 @@ export function CartPage(){
     return (
     <div>
         {cartProducts.map(product =>{
-            return (
-            <div className="productDiv">
-                <div className="imageDiv">
-                    <img src={product.image} alt="" className="cartImage"/>
-                </div>
-            <div className="mainDiv">
-                <div className="contentDiv">
-                    <p>Description:{product.description}</p>
-                    <p>Category: {product.category}</p>
-                    <p>Price: {product.price}$</p>
-                    <p>Number of items: {amount}</p>
-                </div>
-                <div className="amountDiv">
-                    <button onClick={incrementAmount} className="incrementAmountButt"><h1>+</h1></button>
-                    <button onClick={decrementAmount} className="decrementAmountButt"><h1>-</h1></button>
-                </div>
-            </div>
-                <div className="buttDiv">
-                    <button className="cartButt">Buy</button>
-                    <button className="cartButt">Go to</button>
-                    <button className="cartButt deleteButt" onClick={() => {deleteFromCart(product.id)}}>Delete</button>
-                </div>
+            return <div>
+                <h1>{product.name}</h1>
+                <p>{product.description}</p>
+                <p>{product.price}</p>
+                <img src={product.src} alt="" />
+                <button onClick={()=>{deleteFromCart(product.id)}}>Delete</button>
             </div>
             )
         })}
