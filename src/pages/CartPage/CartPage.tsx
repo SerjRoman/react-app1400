@@ -28,8 +28,7 @@ export function CartPage(){
                 <img src={product.src} alt="" />
                 <button onClick={()=>{deleteFromCart(product.id)}}>Delete</button>
             </div>
-            )
-        })}
+            })}
         <div className="cart-footer">
             <h1 className="cart-footer-total-price">Total price: {totalPrice}</h1>
             <div className="cart-footer-buttons">
@@ -37,5 +36,6 @@ export function CartPage(){
                 <button className="cartFooter-delete-all" onClick={() => {deleteAllFromCart()}}><h1>Delete all from cart</h1></button>
             </div>
         </div>
-    </div>)
+    </div>
+    )
 }
