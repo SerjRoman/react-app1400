@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form"
 import { useUserContext } from "../../context/userContext"
+import { Link } from "react-router-dom";
+import "./LoginPage.css"
 
 interface ILoginForm {
     email: string,
@@ -7,6 +9,7 @@ interface ILoginForm {
 }
 
 // yup validation
+
 export function LoginPage (){
     // Пишем скобки, которые отвечают за то, что мы будем деструктуризировать
     const {user, login} = useUserContext()
@@ -19,25 +22,40 @@ export function LoginPage (){
         login(data.email, data.password)
     }
     
-    
     return(
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" placeholder='email' {...register('email', {
-                    required: {value: true, message: 'Field is required'}, 
-                    minLength: {value: 7, message: 'This field should be more than 7 symbols'}, 
-                    maxLength: {value: 100, message: 'This field should be less than 100 symbols'}, })} />
+        <div className="allLogin">
+            <div className="badysLogin">
+                    
+                <form className="badyLogin" onSubmit={handleSubmit(onSubmit)}>
 
-                <p>{formState.errors.email?.message}</p>
+                    <div className="badysLogin">
+                        <h1>Авторизация</h1>
+                    </div>
+                    <label className="label">
+                        Логин:
+                        <input className="input" type="text" placeholder='email' {...register('email', {
+                            required: {value: true, message: 'Field is required'}, 
+                            minLength: {value: 7, message: 'This field should be more than 7 symbols'}, 
+                            maxLength: {value: 100, message: 'This field should be less than 100 symbols'}, })} />
+                    </label>
+                    <p className="error">{formState.errors.email?.message}</p>
 
-                <input type="password" placeholder='password' {...register('password', {
-                    required: {value: true, message: 'Field is required'}, 
-                    minLength: {value: 7, message: 'This field should be more than 7 symbols'}, 
-                    maxLength: {value: 100, message: 'This field should be less than 100 symbols'}, })} />
-                
-                <p>{formState.errors.password?.message}</p>
-                <button type="submit">Submit</button>
-            </form>
+                    <label className="label">
+                        Пароль:
+                        <input className="input" type="password" placeholder='password' {...register('password', {
+                            required: {value: true, message: 'Field is required'}, 
+                            minLength: {value: 7, message: 'This field should be more than 7 symbols'}, 
+                            maxLength: {value: 100, message: 'This field should be less than 100 symbols'}, })} />
+                    </label>
+                    <p className="error">{formState.errors.password?.message}</p>
+                    <div className="divButoon">
+                        <button className="button" type="submit">Войти</button>
+                        <Link to={"/register"}>
+                        <p>Нет аккаунта? Регистрация</p>
+                        </Link>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

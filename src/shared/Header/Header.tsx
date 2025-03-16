@@ -3,9 +3,8 @@ import "./Header.css";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { useUserContext } from "../../context/userContext";
 
-
 export function Header() {
-  const { user } = useUserContext()
+  const { user, isAuthenticated } = useUserContext()
 
 
   return (
@@ -60,12 +59,16 @@ export function Header() {
         </svg>
         Корзина
       </Link>
+      
+      <Link to = {isAuthenticated() ? "/profile" : "/register"}>
       <img
         className="imgProfile"
+        // condition ? true : false
+        // if (user) {user.image} else {"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s"}
         src={user ? user.image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s" }
         // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s"
         alt=""
-      />
+      /></Link>
     </div>
   );
 }

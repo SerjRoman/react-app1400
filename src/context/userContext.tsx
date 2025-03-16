@@ -98,12 +98,20 @@ export function UserContextProvider(props: IUserContextProviderProps){
         }
         getData(token)
     },[])
-    return <userContext.Provider 
+    
+    function isAuthenticated() {
+        if (user === null) {
+            return false
+        }
+        return true 
+    }
+
+    return <userContext.Provider
     value={{
         user: user,
         login: login,
         register: register,
-        isAuthenticated: () => false
+        isAuthenticated: isAuthenticated
     }}>
 
     {props.children}

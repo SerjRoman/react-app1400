@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form"
 import { useUserContext } from "../../context/userContext"
+import './RegisterPage.css'
 
 interface IRegisterForm {
     username: string,
@@ -23,34 +24,51 @@ export function RegisterPage (){
     
     
     return(
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" placeholder="Enter your username"{...registerUser('username', {
-                    required: {value: true, message: 'Field is required'}, 
-                    minLength: {value: 7, message: 'This field should be more than 7 symbols'}, 
-                    maxLength: {value: 100, message: 'This field should be less than 100 symbols'}, })} />
+        <div className='mainDiv'>
+            <div className='registerDiv'>
+                <h1>Регистрация</h1>
+                <form className="formReg" onSubmit={handleSubmit(onSubmit)}>
+                    <label  className="labelReg">
+                        Username:
+                        <input type="text" className='inputForm' placeholder="Enter your username"{...registerUser('username', {
+                            required: {value: true, message: 'Field is required'}, 
+                            minLength: {value: 7, message: 'This field should be more than 7 symbols'}, 
+                            maxLength: {value: 100, message: 'This field should be less than 100 symbols'}, })} />
+                    </label>
 
-                <p>{formState.errors.username?.message}</p>
+                    <p>{formState.errors.username?.message}</p>
 
-                <input type="text" placeholder="Enter your email"{...registerUser('email', {
-                    required: {value: true, message: 'Field is required'}, 
-                    minLength: {value: 7, message: 'This field should be more than 7 symbols'}, 
-                    maxLength: {value: 100, message: 'This field should be less than 100 symbols'}, })} />
+                    <label className='labelReg'>
+                        Email:
+                        <input type="text" className='inputForm' placeholder="Enter your email"{...registerUser('email', {
+                            required: {value: true, message: 'Field is required'}, 
+                            minLength: {value: 7, message: 'This field should be more than 7 symbols'}, 
+                            maxLength: {value: 100, message: 'This field should be less than 100 symbols'}, })} />
+                    </label>
 
-                <p>{formState.errors.email?.message}</p>
+                    <p>{formState.errors.email?.message}</p>
 
-                <input type="password" placeholder="Enter your password"{...registerUser('password', {
-                    required: {value: true, message: 'Field is required'}, 
-                    minLength: {value: 7, message: 'This field should be more than 7 symbols'}, 
-                    maxLength: {value: 100, message: 'This field should be less than 100 symbols'}, })} />
-                
-                <p>{formState.errors.password?.message}</p>
-                <input type="url" placeholder="image"{...registerUser('image', {
-                    required: {value: true, message: 'Field is required'}})} />
+                    <label className="labelReg" >
+                        Password:
+                        <input type="password" className='inputForm' placeholder="Enter your password"{...registerUser('password', {
+                            required: {value: true, message: 'Field is required'}, 
+                            minLength: {value: 7, message: 'This field should be more than 7 symbols'}, 
+                            maxLength: {value: 100, message: 'This field should be less than 100 symbols'}, })} />
+                    </label>
 
-                <p>{formState.errors.image?.message}</p>
-                <button type="submit">Submit</button>
-            </form>
+                    <p>{formState.errors.password?.message}</p>
+
+                    <label className="labelReg">
+                        Image:
+                        <input type="url" className='inputForm' placeholder="image"{...registerUser('image', {
+                            required: {value: true, message: 'Field is required'}})} />
+                    </label>
+
+                    <p>{formState.errors.image?.message}</p>
+                    
+                    <button type="submit" className='formButton'>Submit</button>
+                </form>
+            </div>
         </div>
     )
 }

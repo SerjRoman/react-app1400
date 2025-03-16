@@ -1,0 +1,61 @@
+
+
+.error{
+    display: flex;
+    color: red;
+
+}
+
+.label{
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    gap: 10px;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100px;
+    border-radius: 35px;
+    background-color: #EBE7E7;
+    justify-content: center;
+    font-size: 16px;
+    border: none;
+}
+
+.allLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    width: 100%;
+
+}
+
+.badysLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;   
+}
+
+.badyLogin{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px gray;
+    box-shadow: 1px 1px 1px gray;
+    padding: 20px;
+    border-radius: 20px;
+    gap: 20px;
+}
+
+.divButoon{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    width:100%;
+    justify-content: center;
+}

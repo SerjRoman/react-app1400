@@ -1,0 +1,49 @@
+.mainDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.registerDiv{
+    display: flex;
+    width: 75%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 16px;
+    border: black 2px solid;
+    gap: 50px;
+}
+
+.formReg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.inputForm{
+    display: flex;
+    border-radius: 30px;
+    border: 0px;
+    height: 40px;
+    width: 500px;
+    background-color: rgba(217, 217, 217, 0.48);
+}
+
+.formButton{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 50px;
+    width: 100px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.labelReg{
+    font-size: 24px;
+}
