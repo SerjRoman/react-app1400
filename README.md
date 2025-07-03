@@ -1,46 +1,89 @@
-# Getting Started with Create React App
+🚀 TurboSphere — An E-Commerce Store Concept
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![alt text](https://img.shields.io/badge/License-MIT-blue.svg)
+![alt text](https://img.shields.io/badge/Stack-React%20%7C%20Context%20%7C%20TypeScript-orange)
+![alt text](https://img.shields.io/badge/Status-Educational%20Project-green)
 
-## Available Scripts
+TurboSphere is an educational project that serves as a proof-of-concept for an e-commerce store frontend. This application was built to practice and demonstrate core skills in React, TypeScript, and state management using the React Context API.
 
-In the project directory, you can run:
+<!-- You should add a screenshot of your application here. It makes a huge difference! -->
 
-### `npm start`
+![Untitled 211](https://github.com/user-attachments/assets/f865731d-a05f-4f96-bdf4-971c6d8d5e21)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+💡 Project Status & Disclaimer
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Important: This project is an educational "sandbox." It has successfully fulfilled its primary goal: to serve as a practical learning ground for the technologies involved.
 
-### `npm run build`
+As it stands, the project has several known architectural and stylistic shortcomings. Rather than patching these issues incrementally, the decision was made to preserve this version as a snapshot. It serves as a starting point for a more thoughtful and comprehensive refactoring effort, which is detailed in the Roadmap section below.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+✨ Implemented Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Browse a product catalog.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Add items to the shopping cart.
 
-### `npm run eject`
+View cart contents and the total order price.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+(Potentially) View a detailed product page.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🔧 Tech Stack
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+React: A JavaScript library for building user interfaces.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+TypeScript: A typed superset of JavaScript that enhances code quality and reliability.
 
-## Learn More
+React Context: Used for managing global application state (e.g., the shopping cart).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+CSS: For component styling.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+🏁 Getting Started
+
+To get a local copy up and running, follow these simple steps.
+
+Clone the repository:
+
+Generated bash
+git clone [[LINK]](https://github.com/SerjRoman/react-app1400/)
+
+
+Navigate to the project directory:
+
+Install dependencies:
+
+npm install
+
+Run the project:
+
+npm start
+
+The application will be available at http://localhost:3000.
+
+🗺️ Roadmap
+
+This is a list of planned improvements to evolve this educational project into a more robust and scalable solution.
+
+Architectural Refactoring (Feature-Sliced Design):
+
+Goal: Re-architect the project using the FSD methodology. This will provide better module isolation, improve scalability, and make the codebase easier to maintain.
+
+State Management Overhaul:
+
+Goal: Replace React Context with a more powerful and predictable state management library like Redux Toolkit or Zustand. This will allow for more efficient handling of complex state and business logic.
+
+Complete UI/UX Revamp:
+
+Goal: Perform a full refactoring of all styles. Implement a design system or a UI library (e.g., Material-UI, Ant Design) to create a consistent, modern, and responsive user interface.
+
+General Code Refactoring:
+
+Goal: Improve code readability, eliminate code duplication, extract reusable logic into custom hooks, and adhere to clean code best practices.
+
+More screenshots:
+
+
+
+![Untitled 4](https://github.com/user-attachments/assets/d9ff76be-df7c-4555-8b1b-01d26cf7f1b5)
+![Untitled 3](https://github.com/user-attachments/assets/2ff20438-6f91-45bd-bac6-1790f1614754)
+
